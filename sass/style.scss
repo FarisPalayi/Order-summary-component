@@ -1,7 +1,16 @@
 @use "abstracts/colors" as *;
 @use "abstracts/mixins" as *;
 
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   font-family: 'Red Hat Display', sans-serif;
   color: $dark-blue;
 }
+
