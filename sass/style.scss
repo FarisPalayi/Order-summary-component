@@ -2,6 +2,13 @@
 @use "abstracts/functions" as *;
 @use "global";
 
+/*
+  The "magic numbers" in the middle of the clamp functions are:
+  viewport value which is equal to the minimum value(first argument of clamp()) 
+  at 375px viewport/screen width width.
+  why: to make elements fluidly responsive.
+*/
+
 .card {
   margin: 24px;
   max-width: 450px;
@@ -40,19 +47,23 @@
 }
 
 .plan {
+  --plan-gap: clamp(16px, 2.8421vw, 18px);
+  --plan-icon-width: 48px;
+  --plan-change-btn-width: 48px;
+
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: var(--plan-gap);
   width: 100%;
-  padding: 16px;
+  padding: clamp(16px, 4.26288vw, 24px);
 
   background-color: $pale-blue;
   border-radius: 13px;
 }
 
 .plan__icon {
-  width: 48px;
+  width: var(--plan-icon-width);
   height: 49px;
 
   border-radius: 50%;
@@ -62,6 +73,11 @@
 }
 
 .plan__details {
+  width: calc(
+    100% - var(--plan-icon-width) - var(--plan-change-btn-width) -
+      (var(--plan-gap) * 2)
+  );
+  min-width: fit-content;
   text-align: left;
 }
 
@@ -75,6 +91,7 @@
 }
 
 .plan__change__btn {
+  width: var(--plan-change-btn-width);
   font-size: toRem(13);
   color: $bright-blue;
   text-decoration: underline;
