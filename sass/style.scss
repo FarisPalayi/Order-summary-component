@@ -1,38 +1,6 @@
 @use "abstracts/colors" as *;
 @use "abstracts/functions" as *;
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-button {
-  all: unset;
-  font-weight: bold;
-  cursor: pointer;
-
-  &:focus-visible {
-    outline: dotted lighten($bright-blue, 15) 2px;
-    outline-offset: 2px;
-  }
-}
-
-html {
-  font-size: 16px;
-  font-family: "Red Hat Display", sans-serif;
-  text-align: center;
-
-  color: $dark-blue;
-  background-color: $pale-blue;
-}
-
-body {
-  display: grid;
-  place-items: center;
-}
+@use "global";
 
 .card {
   margin: 24px;
@@ -41,6 +9,8 @@ body {
   border-radius: 18px;
   overflow: hidden;
   background-color: $very-pale-blue;
+
+  box-shadow: 0px 14px 20px 0px hsla(0, 0%, 0%, 0.071);
 }
 
 .card__img {
