@@ -1,5 +1,5 @@
 @use "abstracts/colors" as *;
-@use "abstracts/mixins" as *;
+@use "abstracts/functions" as *;
 
 *,
 *::before,
@@ -9,8 +9,132 @@
   box-sizing: border-box;
 }
 
-html {
-  font-family: 'Red Hat Display', sans-serif;
-  color: $dark-blue;
+button {
+  all: unset;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: dotted lighten($bright-blue, 15) 2px;
+    outline-offset: 2px;
+  }
 }
 
+html {
+  font-size: 16px;
+  font-family: "Red Hat Display", sans-serif;
+  text-align: center;
+
+  color: $dark-blue;
+  background-color: $pale-blue;
+}
+
+body {
+  display: grid;
+  place-items: center;
+}
+
+.card {
+  margin: 24px;
+  max-width: 450px;
+
+  border-radius: 18px;
+  overflow: hidden;
+  background-color: $very-pale-blue;
+}
+
+.card__img {
+  width: 100%;
+  height: 160px;
+
+  background-color: $bright-blue; // fallback
+  background-image: url("../images/illustration-hero.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+
+  padding: 37px 24px;
+}
+
+.card__content__desc {
+  text-align: center;
+  color: $desaturated-blue;
+  padding: 0 8px; // is 16px
+}
+
+.plan {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 16px;
+
+  background-color: $pale-blue;
+  border-radius: 13px;
+}
+
+.plan__icon {
+  width: 48px;
+  height: 49px;
+
+  border-radius: 50%;
+  background-image: url("../images/icon-music.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.plan__details {
+  text-align: left;
+}
+
+.plan__details__title {
+  font-size: toRem(14);
+}
+
+.plan__details__amount {
+  font-size: toRem(13);
+  color: $desaturated-blue;
+}
+
+.plan__change__btn {
+  font-size: toRem(13);
+  color: $bright-blue;
+  text-decoration: underline;
+
+  &:hover {
+    color: lighten($bright-blue, 10);
+  }
+}
+
+.payment-btn {
+  height: 50px;
+  width: 100%;
+
+  color: $pale-blue;
+  background-color: $bright-blue;
+  border-radius: 12px;
+
+  box-shadow: 0 11px 11px transparentize($bright-blue, 0.75);
+  transition: background-color 250ms;
+
+  &:hover {
+    background-color: lighten($bright-blue, 10);
+  }
+}
+
+.cancel-btn {
+  padding: 0 10px;
+  color: $desaturated-blue;
+  transition: color 250ms, box-shadow 250ms;
+
+  &:hover {
+    color: $dark-blue;
+  }
+}

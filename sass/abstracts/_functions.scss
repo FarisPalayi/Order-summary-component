@@ -1,0 +1,9 @@
+@use "sass:math" as *;
+
+@function toRem($pixel) {
+  @if (is-unitless($pixel)) {
+    @return div($pixel, 16) + rem;
+  } @else {
+    @warn "value should be unitless";
+  }
+}
