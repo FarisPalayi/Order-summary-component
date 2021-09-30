@@ -1,5 +1,9 @@
 @use "sass:math" as *;
 
+// convert pixels to rem, assuming
+// that the base size is 16px.
+// used as `font-size` values
+
 @function toRem($pixel) {
   @if (is-unitless($pixel)) {
     @return div($pixel, 16) + rem;

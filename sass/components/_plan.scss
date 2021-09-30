@@ -1,0 +1,57 @@
+@use "abstracts/colors" as *;
+@use "abstracts/functions" as *;
+
+.plan {
+  --plan-gap: clamp(16px, 2.8421vw, 18px);
+  --plan-icon-width: 48px;
+  --plan-change-btn-width: 48px;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--plan-gap);
+  width: 100%;
+  padding: clamp(16px, 4.26288vw, 24px);
+
+  background-color: $pale-blue;
+  border-radius: 13px;
+}
+
+.plan__icon {
+  width: var(--plan-icon-width);
+  height: 49px;
+
+  border-radius: 50%;
+  background-image: url("../images/icon-music.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.plan__details {
+  width: calc(
+    100% - var(--plan-icon-width) - var(--plan-change-btn-width) -
+      (var(--plan-gap) * 2)
+  );
+  min-width: fit-content;
+  text-align: left;
+
+  &__title {
+    font-size: toRem(14);
+  }
+
+  &__amount {
+    font-size: toRem(13);
+    color: $desaturated-blue;
+  }
+}
+
+.plan__change__btn {
+  width: var(--plan-change-btn-width);
+  font-size: toRem(13);
+  color: $bright-blue;
+  text-decoration: underline;
+
+  &:hover {
+    color: lighten($bright-blue, 10);
+  }
+}
