@@ -1,5 +1,6 @@
 @use "abstracts/colors" as *;
 @use "abstracts/functions" as *;
+@use "abstracts/mixins" as *;
 
 .plan {
   --plan-gap: clamp(16px, 2.8421vw, 18px);
@@ -9,8 +10,10 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--plan-gap);
+  @include flex-gap(18px); // fallback
+  @include flex-gap(var(--plan-gap));
   width: 100%;
+  padding: 24px; // fallback
   padding: clamp(16px, 4.26288vw, 24px);
 
   background-color: $pale-blue;
@@ -18,6 +21,7 @@
 }
 
 .plan__icon {
+  width: 48px; // fallback
   width: var(--plan-icon-width);
   height: 49px;
 
@@ -28,6 +32,7 @@
 }
 
 .plan__details {
+  width: 174px; // fallback
   width: calc(
     100% - var(--plan-icon-width) - var(--plan-change-btn-width) -
       (var(--plan-gap) * 2)
@@ -46,6 +51,7 @@
 }
 
 .plan__change__btn {
+  width: 48px; // fallback
   width: var(--plan-change-btn-width);
   font-size: toRem(13);
   color: $bright-blue;

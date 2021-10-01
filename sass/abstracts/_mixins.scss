@@ -1,0 +1,20 @@
+// for browsers that doesn't support flexbox's `gap` property
+@mixin flex-gap($gap, $dir: row) {
+  @if ($dir == row) {
+    > * {
+      margin-right: $gap;
+    }
+    > *:last-child {
+      margin-right: 0;
+    }
+  } @else if ($dir == col) {
+    > * {
+      margin-bottom: $gap;
+    }
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  } @else {
+    @warn "invalid $dir value";
+  }
+}

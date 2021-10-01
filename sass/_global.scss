@@ -10,6 +10,8 @@
 
 button {
   all: unset;
+  border: none; // ie11
+  background-color: transparent; // ie11
   font-weight: bold;
   cursor: pointer;
 
