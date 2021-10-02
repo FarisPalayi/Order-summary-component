@@ -2,27 +2,30 @@
 @use "abstracts/functions" as *;
 @use "abstracts/mixins" as *;
 
+$plan-gap: 20px;
+$plan-icon-width: 48px;
+$plan-change-btn-width: 53px;
+
 .plan {
-  --plan-gap: clamp(16px, 2.8421vw, 18px);
-  --plan-icon-width: 48px;
-  --plan-change-btn-width: 48px;
+  --plan-gap: #{$plan-gap};
+  --plan-icon-width: #{$plan-icon-width};
+  --plan-change-btn-width: #{$plan-change-btn-width};
 
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  @include flex-gap(18px); // fallback
+  @include flex-gap($plan-gap); // fallback
   @include flex-gap(var(--plan-gap));
+
   width: 100%;
-  padding: 24px; // fallback
-  padding: clamp(16px, 4.26288vw, 24px);
+  @include clamp(padding, 16px, 4.26288vw, 24px);
 
   background-color: $very-pale-blue;
   border-radius: 13px;
 }
 
 .plan__icon {
-  width: 48px; // fallback
-  width: var(--plan-icon-width);
+  @include variable(width, --plan-icon-width, $plan-icon-width);
   height: 49px;
 
   border-radius: 50%;
@@ -32,30 +35,37 @@
 }
 
 .plan__details {
-  width: 174px; // fallback
-  width: calc(
-    100% - var(--plan-icon-width) - var(--plan-change-btn-width) -
-      (var(--plan-gap) * 2)
+  // prettier-ignore
+  --plan-details-width: calc(
+    100% - var(--plan-icon-width) - var(--plan-change-btn-width) - (var(--plan-gap) * 2)
   );
+
+  @include variable(width, --plan-details-width, 165px);
   min-width: fit-content;
   text-align: left;
 
+  &__title,
+  &__amount {
+    @include clamp(font-size, toRem(14), 3.4636vw, toRem(16));
+  }
+
   &__title {
-    font-size: toRem(14);
+    margin-bottom: 5px;
+    font-weight: 900;
   }
 
   &__amount {
-    font-size: toRem(13);
     color: $desaturated-blue;
   }
 }
 
 .plan__change__btn {
-  width: 48px; // fallback
-  width: var(--plan-change-btn-width);
-  font-size: toRem(13);
+  @include variable(width, --plan-change-btn-width, $plan-change-btn-width);
+  font-size: toRem(14.08);
+  font-weight: 900;
   color: $bright-blue;
   text-decoration: underline;
+  overflow-x: auto; // ie11
 
   &:hover {
     color: lighten($bright-blue, 10);
