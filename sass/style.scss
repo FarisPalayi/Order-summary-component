@@ -1,7 +1,8 @@
 @use "abstracts/colors" as *;
 @use "abstracts/functions" as *;
 @use "abstracts/mixins" as *;
-@use "global";
+@use "base/global";
+@use "base/ripple";
 @use "components/plan";
 
 /*
