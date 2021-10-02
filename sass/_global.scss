@@ -8,19 +8,6 @@
   box-sizing: border-box;
 }
 
-button {
-  all: unset;
-  border: none; // ie11
-  background-color: transparent; // ie11
-  font-weight: bold;
-  cursor: pointer;
-
-  &:focus-visible {
-    outline: dotted lighten($bright-blue, 15) 2px;
-    outline-offset: 2px;
-  }
-}
-
 html {
   font-size: 16px;
   font-family: "Red Hat Display", sans-serif;
@@ -55,5 +42,23 @@ body {
     @media screen and (max-width: 900px) {
       background-image: url("../images/pattern-background-mobile.svg");
     }
+  }
+}
+
+h1,
+h2 {
+  font-weight: 900;
+}
+
+button {
+  all: unset;
+  border: none; // ie11
+  background-color: transparent; // ie11
+  font-weight: bold;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: dotted lighten($bright-blue, 15) 2px;
+    outline-offset: 2px;
   }
 }
