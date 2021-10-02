@@ -1,5 +1,5 @@
-// for browsers that doesn't support flexbox's `gap` property
-@mixin flex-gap($gap, $dir: row) {
+// to imitate flexbox's gap property in browsers that doesn't support it
+@mixin _padding-gap($gap, $dir) {
   @if ($dir == row) {
     > * {
       margin-right: $gap;
@@ -17,4 +17,44 @@
   } @else {
     @warn "invalid $dir value";
   }
+}
+
+// applys gap if the browser supports it. else applies padding-gap
+@mixin flex-gap($gap, $dir: all) {
+  @if ($dir == all) {
+    @include _padding-gap($gap, row);
+
+    @supports (gap: $gap) {
+      @include _padding-gap(0, row); // reset
+      gap: $gap;
+    }
+  }
+
+  @if ($dir == row) {
+    @include _padding-gap($gap, $dir);
+
+    @supports (row-gap: $gap) {
+      @include _padding-gap(0, $dir);
+      row-gap: $gap;
+    }
+  }
+
+  @if ($dir == col) {
+    @include _padding-gap($gap, $dir);
+
+    @supports (column-gap: $gap) {
+      @include _padding-gap($gap, $dir);
+      column-gap: $gap;
+    }
+  }
+}
+
+@mixin clamp($property, $min, $mid, $max) {
+  #{$property}: $max; // fallback valeu for the browsers that doesn't support css clamp() function
+  #{$property}: clamp($min, $mid, $max);
+}
+
+@mixin variable($property, $variable-name, $fallback-value) {
+  #{$property}: $fallback-value; // fallback value for the browsers that doesn't suppoert css variables
+  #{$property}: var(#{$variable-name});
 }
