@@ -16,6 +16,7 @@ $plan-change-btn-width: 53px;
   flex-wrap: wrap;
   @include flex-gap($plan-gap); // fallback
   @include flex-gap(var(--plan-gap));
+  @include clamp(margin-bottom, 24px, 6.3944vw, 33px);
 
   width: 100%;
   @include clamp(padding, 16px, 4.26288vw, 24px);
@@ -50,7 +51,7 @@ $plan-change-btn-width: 53px;
   }
 
   &__title {
-    margin-bottom: 5px;
+    @include clamp(margin-bottom, 0px, 0.3472vw, 5px);
     font-weight: 900;
   }
 
@@ -61,7 +62,7 @@ $plan-change-btn-width: 53px;
 
 .plan__change__btn {
   @include variable(width, --plan-change-btn-width, $plan-change-btn-width);
-  font-size: toRem(14.08);
+  @include clamp(font-size, toRem(12), 3.4636vw, 0.88rem);
   font-weight: 900;
   color: $bright-blue;
   text-decoration: underline;

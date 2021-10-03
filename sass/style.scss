@@ -6,7 +6,7 @@
 @use "components/plan";
 
 /*
-  The "magic numbers" in the middle of the clamp functions (or $mid in clamp-fallback mixin) are:
+  The "magic numbers" in the middle of the clamp functions (or $mid in clamp() mixin) are:
   viewport value which is equal to the minimum value(first argument of clamp()) 
   at 375px viewport/screen width width.
   why: to make elements fluidly responsive.
@@ -41,10 +41,9 @@ $card-bd-radius: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  @include flex-gap(33px, col);
 
   padding: 53px 48px; // fallback
-  padding: clamp(0px, 8.8vw, 53px) min(6.3944vw, 48px);
+  padding: min(8.8vw, 53px) min(6.3944vw, 48px);
 }
 
 .card__content__title {
@@ -60,6 +59,11 @@ $card-bd-radius: 18px;
   line-height: 1.6;
   text-align: center;
   color: $desaturated-blue;
+}
+
+.payment-btn,
+.cancel-btn {
+  @include clamp(font-size, 0.95rem, 4.04974vw, 1rem);
 }
 
 .payment-btn {
