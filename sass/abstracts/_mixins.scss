@@ -50,7 +50,7 @@
 }
 
 @mixin clamp($property, $min, $mid, $max) {
-  #{$property}: $max; // fallback valeu for the browsers that doesn't support css clamp() function
+  #{$property}: $max; // fallback value for the browsers that doesn't support css clamp() function
   #{$property}: clamp($min, $mid, $max);
 }
 
