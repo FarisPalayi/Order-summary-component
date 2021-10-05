@@ -1,0 +1,28 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/mixins" as *;
+
+.card__img,
+.card__img::after {
+  width: 100%;
+  @include clamp(height, 160px, 42vw, 220px);
+
+  border-radius: $card-bd-radius $card-bd-radius 0 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.card__img {
+  position: relative;
+  isolation: isolate;
+  background-color: $bright-blue; // fallback
+  background-image: url(../../images/blurred-tiny.svg);
+
+  &::after {
+    content: "";
+    position: absolute;
+    background-image: url(../../images/illustration-hero.svg);
+    inset: 0;
+  }
+}

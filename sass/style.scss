@@ -1,9 +1,11 @@
+@use "abstracts/variables" as *;
 @use "abstracts/colors" as *;
 @use "abstracts/functions" as *;
 @use "abstracts/mixins" as *;
 @use "base/global";
 @use "base/ripple";
 @use "components/plan";
+@use "components/card__img";
 
 /*
   The "magic numbers" in the middle of the clamp functions (or $mid in clamp() mixin) are:
@@ -11,8 +13,6 @@
   at 375px viewport/screen width width.
   why: to make elements fluidly responsive.
 */
-
-$card-bd-radius: 18px;
 
 .card {
   margin: 24px;
@@ -23,18 +23,6 @@ $card-bd-radius: 18px;
   background-color: $white;
 
   box-shadow: 0px 14px 20px 0px hsla(0, 0%, 0%, 0.071);
-}
-
-.card__img {
-  width: 100%;
-  @include clamp(height, 160px, 42vw, 220px);
-
-  border-radius: $card-bd-radius $card-bd-radius 0 0;
-  background-color: $bright-blue; // fallback
-  background-image: url("../images/illustration-hero.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top;
 }
 
 .card__content {
