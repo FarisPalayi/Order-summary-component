@@ -5,7 +5,7 @@
 @use "base/global";
 @use "base/ripple";
 @use "components/plan";
-@use "components/card__img";
+@use "components/card-img";
 
 /*
   The "magic numbers" in the middle of the clamp functions (or $mid in clamp() mixin) are:
@@ -34,27 +34,19 @@
   padding: min(8.8vw, 53px) min(6.3944vw, 48px);
 }
 
-.card__content__title {
+.card__title {
   @include clamp(font-size, toRem(21.92), 5.84013vw, toRem(28));
   margin-bottom: 17px;
   width: 100%;
 }
 
-.card__content__desc {
-  width: 100%; // ie11
-  margin-bottom: 20px;
-  padding: 0 8px;
-  line-height: 1.6;
-  text-align: center;
-  color: $desaturated-blue;
-}
-
-.payment-btn,
-.cancel-btn {
+.card__payment-btn,
+.card__cancel-btn {
   @include clamp(font-size, 0.95rem, 4.04974vw, 1rem);
+  user-select: none;
 }
 
-.payment-btn {
+.card__payment-btn {
   height: 50px;
   width: 100%;
   margin-bottom: toRem(15.2);
@@ -71,7 +63,7 @@
   }
 }
 
-.cancel-btn {
+.card__cancel-btn {
   padding: 0 10px;
   color: $desaturated-blue;
   transition: color 250ms, box-shadow 250ms;
