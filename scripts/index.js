@@ -1,15 +1,14 @@
-const heroImg = new Image();
-
-heroImg.src = "../images/illustration-hero.svg";
-console.log(heroImg);
-
 function showHeroImg(imgElm, img) {
   imgElm.appendChild(img);
 }
 
+const heroImg = new Image();
+heroImg.src = "../images/illustration-hero.svg";
 const heroImgElm = document.querySelector(".card__img");
 
-heroImg.addEventListener("load", () => showHeroImg(heroImgElm, heroImg));
+heroImg.addEventListener("load", function () {
+  showHeroImg(heroImgElm, heroImg);
+});
 
 function createRipple(event) {
   var button = event.currentTarget;
