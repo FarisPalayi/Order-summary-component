@@ -54,7 +54,18 @@
   #{$property}: clamp($min, $mid, $max);
 }
 
+@mixin min($property, $val-1, $val-2) {
+  #{$property}: $val-2; // fallback value for the browsers that doesn't support css min() function
+  #{$property}: min($val-1, $val-2);
+}
+
 @mixin variable($property, $variable-name, $fallback-value) {
   #{$property}: $fallback-value; // fallback value for the browsers that doesn't suppoert css variables
   #{$property}: var(#{$variable-name});
+}
+
+@mixin desktop {
+  @media screen and (min-width: 900px) {
+    @content;
+  }
 }

@@ -62,7 +62,7 @@ $plan-change-btn-width: 53px;
 
 .plan__change-btn {
   @include variable(width, --plan-change-btn-width, $plan-change-btn-width);
-  @include clamp(font-size, toRem(12), 3.4636vw, 0.88rem);
+  @include clamp(font-size, toRem(12), 3.4636vw, toRem(14.08));
   font-weight: 900;
   color: $bright-blue;
   text-decoration: underline;

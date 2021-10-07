@@ -1,4 +1,6 @@
 @use "abstracts/colors" as *;
+@use "abstracts/functions" as *;
+@use "abstracts/mixins" as *;
 
 *,
 *::before,
@@ -11,6 +13,7 @@
 html {
   font-size: 16px;
   font-family: "Red Hat Display", sans-serif;
+  font-weight: 500;
   text-align: center;
 
   color: $dark-blue;
@@ -33,14 +36,14 @@ body {
     top: 0;
     left: 0; // ie11
 
-    background-image: url("../images/pattern-background-desktop.svg");
+    background-image: url("../images/pattern-background-mobile.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top left;
     z-index: -1;
 
-    @media screen and (max-width: 900px) {
-      background-image: url("../images/pattern-background-mobile.svg");
+    @include desktop {
+      background-image: url("../images/pattern-background-desktop.svg");
     }
   }
 }
@@ -61,6 +64,7 @@ button {
   background-color: transparent; // ie11
   font-weight: bold;
   cursor: pointer;
+  user-select: none;
 
   &:focus-visible {
     outline: dotted lighten($bright-blue, 15) 2px;
@@ -70,9 +74,17 @@ button {
 
 p {
   width: 100%; // ie11
-  margin-bottom: 20px;
-  padding: 0 8px;
+  max-width: 330px;
+  padding: 0 10px;
   line-height: 1.6;
   text-align: center;
   color: $desaturated-blue;
+  @include clamp(font-size, toRem(15.5), 1.11111vw, toRem(16));
+  letter-spacing: -0.2px;
+  margin-bottom: 23px;
+
+  @include desktop {
+    letter-spacing: 0;
+    margin-bottom: 20px;
+  }
 }

@@ -30,8 +30,10 @@
   flex-direction: column;
   align-items: center;
 
-  padding: 53px 48px; // fallback
-  padding: min(8.8vw, 53px) min(6.3944vw, 48px);
+  @include min(padding-top, 8.8vw, 46px);
+  @include min(padding-bottom, 8.8vw, 49px);
+  @include min(padding-left, 6.3944vw, 48px);
+  @include min(padding-right, 6.3944vw, 48px);
 }
 
 .card__title {
@@ -42,14 +44,14 @@
 
 .card__payment-btn,
 .card__cancel-btn {
-  @include clamp(font-size, 0.95rem, 4.04974vw, 1rem);
-  user-select: none;
+  font-size: toRem(15.2);
 }
 
 .card__payment-btn {
   height: 50px;
   width: 100%;
   margin-bottom: toRem(15.2);
+  @include clamp(margin-bottom, 24px, 3vw, 31px);
 
   color: $pale-blue;
   background-color: $bright-blue;
