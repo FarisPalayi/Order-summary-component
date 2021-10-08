@@ -1,13 +1,16 @@
-function showHeroImg(imgElm, img) {
-  imgElm.appendChild(img);
+var heroImgElm = document.querySelector(".card__img > div");
+
+var imgSource = "../images/illustration-hero.svg";
+var heroImg = new Image();
+heroImg.src = imgSource;
+
+function showHeroImg(imgElm, imgSrc) {
+  imgElm.style.backgroundImage = "url(" + imgSrc + ")";
+  imgElm.style.opacity = "1";
 }
 
-const heroImg = new Image();
-heroImg.src = "../images/illustration-hero.svg";
-const heroImgElm = document.querySelector(".card__img");
-
 heroImg.addEventListener("load", function () {
-  showHeroImg(heroImgElm, heroImg);
+  showHeroImg(heroImgElm, imgSource);
 });
 
 function createRipple(event) {
