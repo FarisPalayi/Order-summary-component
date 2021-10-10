@@ -20,7 +20,7 @@ html {
   background-color: $pale-blue;
 }
 
-body {
+main {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,7 +38,7 @@ body {
 
     background-image: url("../images/pattern-background-mobile.svg");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100%;
     background-position: top left;
     z-index: -1;
 

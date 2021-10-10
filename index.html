@@ -15,28 +15,30 @@
     <title>Order summary card</title>
   </head>
   <body>
-    <article class="card">
-      <div class="card__img"><div></div></div>
-      <div class="card__content">
-        <h1 class="card__title">Order Summary</h1>
-        <p>
-          You can now listen to millions of songs, audiobooks, and podcasts on
-          any device anywhere you like!
-        </p>
-        <div class="plan">
-          <div class="plan__icon"></div>
-          <div class="plan__details">
-            <h2 class="plan__title">Annual Plan</h2>
-            <span class="plan__amount">$59.99/year</span>
+    <main>
+      <article class="card">
+        <div class="card__img"><div></div></div>
+        <div class="card__content">
+          <h1 class="card__title">Order Summary</h1>
+          <p>
+            You can now listen to millions of songs, audiobooks, and podcasts on
+            any device anywhere you like!
+          </p>
+          <div class="plan">
+            <div class="plan__icon"></div>
+            <div class="plan__details">
+              <h2 class="plan__title">Annual Plan</h2>
+              <span class="plan__amount">$59.99/year</span>
+            </div>
+            <div class="plan__change">
+              <button class="plan__change-btn">Change</button>
+            </div>
           </div>
-          <div class="plan__change">
-            <button class="plan__change-btn">Change</button>
-          </div>
+          <button class="card__payment-btn">Proceed to Payment</button>
+          <button class="card__cancel-btn">Cancel Order</button>
         </div>
-        <button class="card__payment-btn">Proceed to Payment</button>
-        <button class="card__cancel-btn">Cancel Order</button>
-      </div>
-    </article>
+      </article>
+    </main>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
