@@ -17,7 +17,10 @@
   <body>
     <main>
       <article class="card">
-        <div class="card__img"><div></div></div>
+        <!--! should be a form -->
+        <div class="card__img-bg">
+          <div class="card__img js-hero-img"></div>
+        </div>
         <div class="card__content">
           <h1 class="card__title">Order Summary</h1>
           <p>
@@ -34,7 +37,9 @@
               <button class="plan__change-btn">Change</button>
             </div>
           </div>
-          <button class="card__payment-btn">Proceed to Payment</button>
+          <button class="card__payment-btn js-payment-btn">
+            Proceed to Payment
+          </button>
           <button class="card__cancel-btn">Cancel Order</button>
         </div>
       </article>
