@@ -1,0 +1,11 @@
+.env
+*.sketch
+*.fig
+*.xd
+.DS_Store
+.prettierignore
+node_modules/
+README.md
+dist/
+*.txt
+.env
