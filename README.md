@@ -31,11 +31,11 @@ Users should be able to:
 
 - On 1440px width 900px height (desktop)
 
-![site screenshot on desktop](./screenshot/images/../../images/screenshot/desktop.png)
+![site screenshot on desktop](./frontend/images/screenshot/desktop.png)
 
 - On 375px width 709px height (mobile)
 
-![site screenshot on mobile](./screenshot/images/../../images/screenshot/mobile.png)
+![site screenshot on mobile](./frontend/images/screenshot/mobile.png)
 
 ### Supported Browsers
 
