@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-import express from "express";
+import express, { Request, Response } from "express";
 const app = express();
 
 import cors from "cors";
@@ -19,37 +19,37 @@ interface ISubscriptionDetails {
 
 // price details
 const subscriptionDetails: ISubscriptionDetails[] = [
-  { id: 1, name: "weekly subscription", price: 10, quantity: 1 },
-  { id: 2, name: "monthly subscription", price: 40, quantity: 1 },
-  { id: 3, name: "annual subscription", price: 400, quantity: 1 },
+  { id: 1, name: "weekly subscription", price: 9900, quantity: 1 },
+  { id: 2, name: "monthly subscription", price: 39900, quantity: 1 },
+  { id: 3, name: "annual subscription", price: 399900, quantity: 1 },
 ];
 
-// stipe.checkout.sessions.create()
-function createStripeSession(req: any) {
+function createStripeSession(req: Request) {
   return {
     payment_method_types: ["card"],
     mode: "payment",
     line_items: req.body.items.map((item: ISubscriptionDetails) => {
-      const { id, price, name, quantity } = item;
+      const { id } = item;
+      const { name, price } = subscriptionDetails.find(
+        (subscription) => subscription.id === id
+      )!;
 
       return {
-        quantity: quantity,
+        quantity: 1,
         price_data: {
-          currency: "usd",
-          product_data: {
-            name,
-          },
+          currency: "inr",
+          product_data: { name },
           unit_amount: price,
         },
       };
     }),
-    success_url: `${process.env.CLIENT_URL}/success.html`,
-    cancel_url: `${process.env.CLIENT_URL}/failure.html`,
+    success_url: `${process.env.CLIENT_URL}`,
+    cancel_url: `${process.env.CLIENT_URL}`,
   };
 }
 
 // post
-app.post("/create-checkout-session", async (req: any, res: any) => {
+app.post("/create-checkout-session", async (req: Request, res: Response) => {
   try {
     const session = await stripe.checkout.sessions.create(
       createStripeSession(req)
@@ -62,6 +62,7 @@ app.post("/create-checkout-session", async (req: any, res: any) => {
 
 // listen in port
 const PORT = 3000;
+
 app.listen(3000, () =>
   console.log(`Server is listening on port http://localhost:${PORT}`)
 );
