@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:live": "nodemon --exec ts-node -- ./server.ts",
-    "dev:server": "npm run build:live"
+    "start": "npm run build:live"
   },
   "keywords": [],
   "author": "",
