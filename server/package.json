@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build:server": "ts-node ./server.ts",
+    "start": "npm run build:server",
     "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./server.ts",
-    "start": "npm run build:live"
+    "live": "npm run build:live"
   },
   "keywords": [],
   "author": "",
