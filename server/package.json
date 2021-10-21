@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tsc": "tsc",
     "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./server.ts",
-    "start": "npm run build:live",
-    "start:prod": "node build/server.js"
+    "start:live": "npm run build:live",
+    "tsc": "tsc",
+    "start": "tsc && node build/server.js"
   },
   "keywords": [],
   "author": "",
