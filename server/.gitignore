@@ -9,4 +9,3 @@ README.md
 dist/
 *.txt
 .env
-/build

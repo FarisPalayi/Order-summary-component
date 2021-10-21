@@ -6,11 +6,11 @@
   "scripts": {
     "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./server.ts",
     "start:live": "npm run build:live",
-    "tsc": "tsc",
-    "start": "tsc && node build/server.js"
+    "build": "tsc",
+    "start": "node build/server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Faris P",
   "license": "ISC",
   "devDependencies": {
     "@types/cors": "^2.8.12",
