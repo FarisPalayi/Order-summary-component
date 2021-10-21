@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:live": "nodemon --exec ts-node -- ./server.ts",
+    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./server.ts",
     "start": "npm run build:live"
   },
   "keywords": [],
