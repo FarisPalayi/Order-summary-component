@@ -6,7 +6,8 @@
   "scripts": {
     "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./server.ts",
     "start:live": "npm run build:live",
-    "tsc": "tsc",
+    "build": "tsc",
+    "postinstall": "npm run build",
     "start": "node build/server.js"
   },
   "keywords": [],
