@@ -16,8 +16,7 @@
   </head>
   <body>
     <main>
-      <article class="card">
-        <!--! should be a form -->
+      <form class="card">
         <div class="card__img-bg">
           <div class="card__img js-hero-img"></div>
         </div>
@@ -34,15 +33,15 @@
               <span class="plan__amount">$59.99/year</span>
             </div>
             <div class="plan__change">
-              <button class="plan__change-btn">Change</button>
+              <button type="button" class="plan__change-btn">Change</button>
             </div>
           </div>
-          <button class="card__payment-btn js-payment-btn">
+          <button type="submit" class="card__payment-btn js-payment-btn">
             Proceed to Payment
           </button>
-          <button class="card__cancel-btn">Cancel Order</button>
+          <button type="button" class="card__cancel-btn">Cancel Order</button>
         </div>
-      </article>
+      </form>
     </main>
     <script src="./scripts/index.js"></script>
   </body>
