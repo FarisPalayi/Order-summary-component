@@ -61,8 +61,6 @@ app.post("/create-checkout-session", async (req: Request, res: Response) => {
 });
 
 // listen in port
-let PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
-app.listen(3000, () =>
-  console.log(`Server is listening on port http://localhost:${PORT}`)
-);
+app.listen(3000, () => console.log(`Server is listening on port ${PORT}`));

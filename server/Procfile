@@ -1,1 +1,2 @@
+postinstall: npm run tsc
 web: npm start
