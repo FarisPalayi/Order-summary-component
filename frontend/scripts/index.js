@@ -1,3 +1,5 @@
+"use strict";
+
 // Hero Image stuff
 
 var imgSource = "../images/illustration-hero.svg";
@@ -74,7 +76,7 @@ function makePayment(url, productId, errCallback = false) {
 
 // spinner stuff
 
-function btnSpinner(btnElm, show) {
+function setBtnSpinner(btnElm, show) {
   var btnText = btnElm.querySelector(".js-spinner-text");
   var btnSpinnerContainer = btnElm.querySelector(".js-spinner-container");
 
@@ -89,20 +91,20 @@ function btnSpinner(btnElm, show) {
 }
 
 // error banner stuff
-function showBanner(bannerElm, show, bannerMsg = "Network Error!") {
-  bannerElm.innerText = bannerMsg;
+function showErrorBanner(bannerMsg = "Something went wrong!") {
+  var errorBanner = document.querySelector(".js-error-banner");
+  var bannerShowDuration = 2500;
 
-  if (show === true) {
-    bannerElm.style.transitionTimingFunction = "ease-out";
-    bannerElm.style.transform = "scale(1)";
-    bannerElm.style.opacity = "1";
-  }
+  errorBanner.innerText = bannerMsg;
+  errorBanner.style.transitionTimingFunction = "ease-out";
+  errorBanner.style.transform = "scale(1)";
+  errorBanner.style.opacity = "1";
 
-  if (show === false) {
-    bannerElm.style.transitionTimingFunction = "ease-in";
-    bannerElm.style.transform = "scale(0.5)";
-    bannerElm.style.opacity = "0";
-  }
+  setTimeout(function () {
+    errorBanner.style.transitionTimingFunction = "ease-in";
+    errorBanner.style.transform = "scale(0.5)";
+    errorBanner.style.opacity = "0";
+  }, bannerShowDuration);
 }
 
 // event listeners
@@ -117,14 +119,12 @@ function showBanner(bannerElm, show, bannerMsg = "Network Error!") {
   };
 
   var paymentBtn = document.querySelector(".js-payment-btn");
-  var errorBanner = document.querySelector(".js-error-banner");
 
   if (paymentBtn) {
     paymentBtn.onclick = function (e) {
       e.preventDefault();
-      showBanner(errorBanner, false);
+      setBtnSpinner(paymentBtn, true);
       createRipple(e);
-      btnSpinner(paymentBtn, true);
 
       // var url = "http://localhost:3000/create-checkout-session"; // temporary
       var host = "https://order-summary-page.herokuapp.com";
@@ -132,8 +132,8 @@ function showBanner(bannerElm, show, bannerMsg = "Network Error!") {
       var productId = 1;
 
       makePayment(host + domain, productId, function () {
-        btnSpinner(paymentBtn, false);
-        showBanner(errorBanner, true);
+        setBtnSpinner(paymentBtn, false);
+        showErrorBanner();
       });
     };
   }
