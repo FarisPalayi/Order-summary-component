@@ -6,6 +6,7 @@
 @use "base/ripple";
 @use "components/plan";
 @use "components/hero-img";
+@use "components/error-banner";
 
 /*
   The "magic numbers" in the middle of the clamp functions (or $mid in clamp() mixin) are:

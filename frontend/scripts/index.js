@@ -66,11 +66,13 @@ function makePayment(url, productId, errCallback = false) {
     }) // redirect
     .catch(function (err) {
       console.error(err, err.error);
-      if (errCallback) errCallback();
+      if (errCallback) {
+        errCallback();
+      }
     });
 }
 
-// spinner
+// spinner stuff
 
 function btnSpinner(btnElm, show) {
   var btnText = btnElm.querySelector(".js-spinner-text");
@@ -86,6 +88,23 @@ function btnSpinner(btnElm, show) {
   }
 }
 
+// error banner stuff
+function showBanner(bannerElm, show, bannerMsg = "Network Error!") {
+  bannerElm.innerText = bannerMsg;
+
+  if (show === true) {
+    bannerElm.style.transitionTimingFunction = "ease-out";
+    bannerElm.style.transform = "scale(1)";
+    bannerElm.style.opacity = "1";
+  }
+
+  if (show === false) {
+    bannerElm.style.transitionTimingFunction = "ease-in";
+    bannerElm.style.transform = "scale(0.5)";
+    bannerElm.style.opacity = "0";
+  }
+}
+
 // event listeners
 
 (function () {
@@ -98,19 +117,23 @@ function btnSpinner(btnElm, show) {
   };
 
   var paymentBtn = document.querySelector(".js-payment-btn");
+  var errorBanner = document.querySelector(".js-error-banner");
 
   if (paymentBtn) {
     paymentBtn.onclick = function (e) {
       e.preventDefault();
+      showBanner(errorBanner, false);
       createRipple(e);
       btnSpinner(paymentBtn, true);
 
       // var url = "http://localhost:3000/create-checkout-session"; // temporary
-      var url =
-        "https://order-summary-page.herokuapp.com/create-checkout-session";
-      var id = 1;
-      makePayment(url, id, function () {
+      var host = "https://order-summary-page.herokuapp.com";
+      var domain = "/create-checkout-session";
+      var productId = 1;
+
+      makePayment(host + domain, productId, function () {
         btnSpinner(paymentBtn, false);
+        showBanner(errorBanner, true);
       });
     };
   }

@@ -1,0 +1,16 @@
+.error-banner {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fefefe;
+  background-color: #ec3131;
+  z-index: 2;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  transform: scale(0.5); // js
+  opacity: 0; // js
+  transition-property: transform, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: ease-out;
+}
