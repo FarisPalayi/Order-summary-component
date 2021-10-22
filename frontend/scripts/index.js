@@ -40,7 +40,7 @@ function createRipple(event) {
 
 // payment stuff
 
-function makePayment(url, productId) {
+function makePayment(url, productId, errCallback = false) {
   fetch(url, {
     method: "POST",
     headers: {
@@ -65,8 +65,25 @@ function makePayment(url, productId) {
       }
     }) // redirect
     .catch(function (err) {
-      console.error(err.error);
+      console.error(err, err.error);
+      if (errCallback) errCallback();
     });
+}
+
+// spinner
+
+function btnSpinner(btnElm, show) {
+  var btnText = btnElm.querySelector(".js-spinner-text");
+  var btnSpinnerContainer = btnElm.querySelector(".js-spinner-container");
+
+  if (show === true) {
+    btnSpinnerContainer.style.display = "inline";
+    btnText.style.display = "none";
+  }
+  if (show === false) {
+    btnSpinnerContainer.style.display = "none";
+    btnText.style.display = "block";
+  }
 }
 
 // event listeners
@@ -84,11 +101,17 @@ function makePayment(url, productId) {
 
   if (paymentBtn) {
     paymentBtn.onclick = function (e) {
+      e.preventDefault();
       createRipple(e);
+      btnSpinner(paymentBtn, true);
 
-      var url = "http://localhost:3000/create-checkout-session"; // temporary
+      // var url = "http://localhost:3000/create-checkout-session"; // temporary
+      var url =
+        "https://order-summary-page.herokuapp.com/create-checkout-session";
       var id = 1;
-      makePayment(url, id);
+      makePayment(url, id, function () {
+        btnSpinner(paymentBtn, false);
+      });
     };
   }
 })();

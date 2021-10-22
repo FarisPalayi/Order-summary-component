@@ -5,7 +5,7 @@
 @use "base/global";
 @use "base/ripple";
 @use "components/plan";
-@use "components/card-img";
+@use "components/hero-img";
 
 /*
   The "magic numbers" in the middle of the clamp functions (or $mid in clamp() mixin) are:
@@ -62,6 +62,32 @@
 
   &:hover {
     background-color: lighten($bright-blue, 10);
+  }
+}
+
+.card__spinner-container {
+  display: none; // js
+}
+
+.card__spinner-svg {
+  transform-origin: 50% 50%;
+  transition-timing-function: ease;
+  transition-property: opacity, transform;
+  animation: load-show 250ms normal ease, load-spinner 0.6s infinite linear;
+}
+
+@keyframes load-spinner {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes spinner-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
