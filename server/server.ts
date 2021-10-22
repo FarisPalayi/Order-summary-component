@@ -4,7 +4,15 @@ import express, { Request, Response } from "express";
 const app = express();
 
 import cors from "cors";
-app.use(cors({ origin: "http://localhost:8080" }));
+
+app.use(
+  cors({
+    origin: [
+      "https://order-summary-page-farisp.netlify.app/",
+      "http://localhost:8080",
+    ],
+  })
+);
 
 app.use(express.json());
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
