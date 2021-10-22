@@ -62,7 +62,7 @@ app.post("/create-checkout-session", async (req: Request, res: Response) => {
     const session = await stripe.checkout.sessions.create(
       createStripeSession(req)
     );
-    res.json({ url: session.url });
+    res.status(200).json({ url: session.url });
   } catch (err: any) {
     res.status(500).json({ error: err.message });
   }
