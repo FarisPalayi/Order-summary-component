@@ -1,7 +1,4 @@
-"use strict";
-
 // Hero Image stuff
-
 var imgSource = "../images/illustration-hero.svg";
 var heroImg = new Image(); // creates a new html img element
 heroImg.src = imgSource;
@@ -42,16 +39,48 @@ function createRipple(event) {
 
 // payment stuff
 
-function makePayment(url, productId, errCallback = false) {
+function postWithXhr(url, body, callback, errCallback) {
+  var xhr;
+
+  if (XMLHttpRequest) {
+    xhr = new XMLHttpRequest();
+  } else {
+    xhr = new ActiveXObject("Microsoft.XMLHTTP"); // legacy
+  }
+
+  xhr.open("POST", url);
+  xhr.setRequestHeader("Content-Type", "application/json");
+
+  xhr.onreadystatechange = function () {
+    var dataReadyToUse = 4;
+    var serverRequestSuccess = 200;
+
+    if (
+      this.readyState === dataReadyToUse &&
+      this.status === serverRequestSuccess
+    ) {
+      var data = JSON.parse(xhr.responseText);
+      if (data) {
+        callback(data);
+      }
+    }
+  };
+
+  xhr.send(JSON.stringify(body));
+
+  xhr.onerror = function () {
+    errCallback("Request failed! Please try again.");
+  };
+}
+
+function postWithFetch(url, body, callback, errCallback) {
   fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
-    body: JSON.stringify({
-      items: [{ id: productId }],
-    }),
+    body: JSON.stringify(body),
   })
     .then(function (res) {
       if (res.ok) {
@@ -66,15 +95,37 @@ function makePayment(url, productId, errCallback = false) {
     })
     .then(function (data) {
       if (data) {
-        window.location = data.url;
+        callback(data);
       }
     }) // redirect
     .catch(function (err) {
+      errCallback();
       console.error(err, err.error);
-      if (errCallback) {
-        errCallback();
-      }
     });
+}
+
+function makePayment(url, productId, errCallback) {
+  var requestBody = {
+    items: [{ id: productId }],
+  };
+
+  var redirectToResponseUrl = function (data) {
+    redirect(data.url);
+  };
+
+  // fallback
+  if (!window.fetch) {
+    postWithXhr(url, requestBody, redirectToResponseUrl, errCallback);
+    return;
+  }
+
+  postWithFetch(url, requestBody, redirectToResponseUrl, errCallback);
+}
+
+function redirect(url) {
+  if (window.location) {
+    window.location = url;
+  }
 }
 
 // spinner stuff
@@ -96,9 +147,11 @@ function setBtnSpinner(btnElm, show) {
 }
 
 // error banner stuff
-function showErrorBanner(
-  bannerMsg = "Something went wrong! Please try again."
-) {
+function showErrorBanner(bannerMsg) {
+  if (typeof bannerMsg !== "string") {
+    bannerMsg = "Something went wrong! Please try again.";
+  }
+
   var errorBanner = document.querySelector(".js-error-banner");
   var bannerShowDuration = 2500;
 
