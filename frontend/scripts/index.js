@@ -39,13 +39,12 @@ function createRipple(event) {
 
 // payment stuff
 
+// to use as fallback if fetch API is not supported
 function postWithXhr(url, body, callback, errCallback) {
-  var xhr;
-
-  if (XMLHttpRequest) {
-    xhr = new XMLHttpRequest();
+  if (window.XMLHttpRequest) {
+    var xhr = new XMLHttpRequest(); // `var` is function scoped, not block scoped
   } else {
-    xhr = new ActiveXObject("Microsoft.XMLHTTP"); // legacy
+    var xhr = new ActiveXObject("Microsoft.XMLHTTP"); // legacy
   }
 
   xhr.open("POST", url);
@@ -104,6 +103,12 @@ function postWithFetch(url, body, callback, errCallback) {
     });
 }
 
+function redirect(url) {
+  if (window.location) {
+    window.location = url;
+  }
+}
+
 function makePayment(url, productId, errCallback) {
   var requestBody = {
     items: [{ id: productId }],
@@ -113,19 +118,12 @@ function makePayment(url, productId, errCallback) {
     redirect(data.url);
   };
 
-  // fallback
   if (!window.fetch) {
     postWithXhr(url, requestBody, redirectToResponseUrl, errCallback);
     return;
   }
 
   postWithFetch(url, requestBody, redirectToResponseUrl, errCallback);
-}
-
-function redirect(url) {
-  if (window.location) {
-    window.location = url;
-  }
 }
 
 // spinner stuff
