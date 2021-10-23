@@ -67,6 +67,12 @@ function postWithXhr(url, body, callback, errCallback) {
 
   xhr.send(JSON.stringify(body));
 
+  // // var timeoutInMinutes = 1;
+  // var timeoutInSeconds = 10; //! temporary value
+  // var timeoutInMilliSeconds = timeoutInSeconds * 1000;
+
+  // xhr.timeout = timeoutInMilliSeconds;
+  //! not working
   xhr.onerror = function () {
     errCallback("Request failed! Please try again.");
   };
@@ -133,14 +139,14 @@ function setBtnSpinner(btnElm, show) {
   var btnSpinnerContainer = btnElm.querySelector(".js-spinner-container");
 
   if (show === true) {
+    btnElm.disabled = true;
     btnSpinnerContainer.style.display = "inline";
     btnText.style.display = "none";
-    btnElm.style.cursor = "not-allowed";
   }
   if (show === false) {
+    btnElm.disabled = true;
     btnSpinnerContainer.style.display = "none";
     btnText.style.display = "block";
-    btnElm.style.cursor = "pointer";
   }
 }
 
@@ -178,7 +184,6 @@ function showErrorBanner(bannerMsg) {
     for (var i = 0; i < btns.length; i++) {
       var btn = btns[i];
       btn.disabled = false;
-      btn.style.cursor = "pointer";
     }
   };
 
@@ -194,10 +199,16 @@ function showErrorBanner(bannerMsg) {
 
   if (paymentBtn) {
     paymentBtn.onclick = function (e) {
+      createRipple(e);
+    };
+  }
+
+  var form = document.querySelector(".js-form");
+
+  if (form && paymentBtn) {
+    form.onsubmit = function (e) {
       e.preventDefault();
       setBtnSpinner(paymentBtn, true);
-      createRipple(e);
-      this.disabled = true;
 
       var baseUrl = "http://localhost:3000"; // dev-local
       // var baseUrl = "https://order-summary-page.herokuapp.com";
