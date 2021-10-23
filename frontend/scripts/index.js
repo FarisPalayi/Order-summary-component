@@ -57,6 +57,9 @@ function makePayment(url, productId, errCallback = false) {
       if (res.ok) {
         return res.json();
       }
+
+      errCallback("Network Error!");
+
       return res.json().then(function (err) {
         Promise.reject(err.error);
       });
@@ -83,15 +86,19 @@ function setBtnSpinner(btnElm, show) {
   if (show === true) {
     btnSpinnerContainer.style.display = "inline";
     btnText.style.display = "none";
+    btnElm.style.cursor = "not-allowed";
   }
   if (show === false) {
     btnSpinnerContainer.style.display = "none";
     btnText.style.display = "block";
+    btnElm.style.cursor = "pointer";
   }
 }
 
 // error banner stuff
-function showErrorBanner(bannerMsg = "Something went wrong!") {
+function showErrorBanner(
+  bannerMsg = "Something went wrong! Please try again."
+) {
   var errorBanner = document.querySelector(".js-error-banner");
   var bannerShowDuration = 2500;
 
@@ -126,14 +133,14 @@ function showErrorBanner(bannerMsg = "Something went wrong!") {
       setBtnSpinner(paymentBtn, true);
       createRipple(e);
 
-      // var url = "http://localhost:3000/create-checkout-session"; // temporary
-      var host = "https://order-summary-page.herokuapp.com";
-      var domain = "/create-checkout-session";
+      // var baseUrl = "http://localhost:3000"; // dev-local
+      var baseUrl = "https://order-summary-page.herokuapp.com";
+      var route = "/create-checkout-session";
       var productId = 1;
 
-      makePayment(host + domain, productId, function () {
+      makePayment(baseUrl + route, productId, function (errMsg) {
         setBtnSpinner(paymentBtn, false);
-        showErrorBanner();
+        errMsg ? showErrorBanner(errMsg) : showErrorBanner();
       });
     };
   }
