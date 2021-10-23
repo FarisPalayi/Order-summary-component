@@ -168,6 +168,20 @@ function showErrorBanner(bannerMsg) {
 // event listeners
 
 (function () {
+  var btns = document.querySelectorAll("button");
+
+  window.onload = function () {
+    if (!btns) {
+      return;
+    }
+
+    for (var i = 0; i < btns.length; i++) {
+      var btn = btns[i];
+      btn.disabled = false;
+      btn.style.cursor = "pointer";
+    }
+  };
+
   var heroImgElm = document.querySelector(".js-hero-img");
 
   heroImg.onload = function () {
@@ -183,14 +197,16 @@ function showErrorBanner(bannerMsg) {
       e.preventDefault();
       setBtnSpinner(paymentBtn, true);
       createRipple(e);
+      this.disabled = true;
 
-      // var baseUrl = "http://localhost:3000"; // dev-local
-      var baseUrl = "https://order-summary-page.herokuapp.com";
+      var baseUrl = "http://localhost:3000"; // dev-local
+      // var baseUrl = "https://order-summary-page.herokuapp.com";
       var route = "/create-checkout-session";
       var productId = 1;
 
       makePayment(baseUrl + route, productId, function (errMsg) {
         setBtnSpinner(paymentBtn, false);
+        paymentBtn.disabled = false;
         errMsg ? showErrorBanner(errMsg) : showErrorBanner();
       });
     };

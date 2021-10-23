@@ -63,7 +63,7 @@ button {
   border: none; // ie11
   background-color: transparent; // ie11
   font-weight: bold;
-  cursor: pointer;
+  cursor: not-allowed; // js
   user-select: none;
 
   &:focus-visible {
@@ -71,6 +71,8 @@ button {
     outline-offset: 2px;
   }
 }
+
+//! add button disabled styles
 
 p {
   width: 100%; // ie11

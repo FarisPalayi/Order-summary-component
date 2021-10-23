@@ -35,11 +35,13 @@
               <span class="plan__amount">$59.99/year</span>
             </div>
             <div class="plan__change">
-              <button type="button" class="plan__change-btn">Change</button>
+              <button type="button" class="plan__change-btn" disabled>
+                Change
+              </button>
             </div>
           </div>
-          <!-- payment button -->
-          <button type="submit" class="card__payment-btn js-payment-btn">
+          <!-- payment button --><!-- prettier-ignore -->
+          <button type="submit" class="card__payment-btn js-payment-btn" disabled>
             <span class="card__payment-btn-text js-spinner-text">
               Proceed to Payment
             </span>
@@ -61,7 +63,9 @@
             </span>
           </button>
           <!-- cancel button -->
-          <button type="button" class="card__cancel-btn">Cancel Order</button>
+          <button type="button" class="card__cancel-btn" disabled>
+            Cancel Order
+          </button>
         </div>
       </form>
     </main>
