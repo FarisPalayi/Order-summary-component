@@ -63,13 +63,17 @@ button {
   border: none; // ie11
   background-color: transparent; // ie11
   font-weight: bold;
-  cursor: not-allowed; // js
   user-select: none;
+  cursor: pointer;
 
   &:focus-visible {
     outline: dotted lighten($bright-blue, 15) 2px;
     outline-offset: 2px;
   }
+}
+
+button:disabled {
+  cursor: not-allowed;
 }
 
 //! add button disabled styles
