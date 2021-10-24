@@ -5,13 +5,13 @@ const app = express();
 
 import cors from "cors";
 
+// add multiple origins
 app.use(
   cors({
     origin: [
-      "https://order-summary-page-farisp.netlify.app/",
-      "http://localhost:8080",
+      "https://order-summary-page-farisp.netlify.app",
+      "http://localhost:3001",
     ],
-    credentials: true,
   })
 );
 
