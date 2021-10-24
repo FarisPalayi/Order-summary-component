@@ -62,6 +62,9 @@ function postWithXhr(url, body, callback, errCallback) {
       if (data) {
         callback(data);
       }
+    } else if (this.status !== serverRequestSuccess) {
+      console.error("Error: " + this.status, this.statusText);
+      errCallback("Request failed! Please try again.");
     }
   };
 
@@ -74,6 +77,7 @@ function postWithXhr(url, body, callback, errCallback) {
   // xhr.timeout = timeoutInMilliSeconds;
   //! not working
   xhr.onerror = function () {
+    console.error("Error: " + this.status, this.statusText);
     errCallback("Request failed! Please try again.");
   };
 }
@@ -210,8 +214,8 @@ function showErrorBanner(bannerMsg) {
       e.preventDefault();
       setBtnSpinner(paymentBtn, true);
 
-      var baseUrl = "http://localhost:3000"; // dev-local
-      // var baseUrl = "https://order-summary-page.herokuapp.com";
+      // var baseUrl = "http://localhost:3000"; // dev-local
+      var baseUrl = "https://order-summary-page.herokuapp.com";
       var route = "/create-checkout-session";
       var productId = 1;
 
