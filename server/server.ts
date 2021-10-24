@@ -11,6 +11,7 @@ app.use(
       "https://order-summary-page-farisp.netlify.app/",
       "http://localhost:8080",
     ],
+    credentials: true,
   })
 );
 
