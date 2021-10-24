@@ -75,7 +75,6 @@ function postWithXhr(url, body, callback, errCallback) {
   // var timeoutInMilliSeconds = timeoutInSeconds * 1000;
 
   // xhr.timeout = timeoutInMilliSeconds;
-  //! not working
   xhr.onerror = function () {
     console.error("Error: " + this.status, this.statusText);
     errCallback("Request failed! Please try again.");
@@ -121,7 +120,7 @@ function redirect(url) {
 
 function makePayment(url, productId, errCallback) {
   var requestBody = {
-    items: [{ id: productId }],
+    id: productId,
   };
 
   var redirectToResponseUrl = function (data) {

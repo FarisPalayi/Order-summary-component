@@ -33,24 +33,24 @@ const subscriptionDetails: ISubscriptionDetails[] = [
 ];
 
 function createStripeSession(req: Request) {
+  const { id } = req.body;
+  const { name, price } = subscriptionDetails.find(
+    (subscription) => subscription.id === id
+  )!;
+
   return {
     payment_method_types: ["card"],
     mode: "payment",
-    line_items: req.body.items.map((item: ISubscriptionDetails) => {
-      const { id } = item;
-      const { name, price } = subscriptionDetails.find(
-        (subscription) => subscription.id === id
-      )!;
-
-      return {
+    line_items: [
+      {
         quantity: 1,
         price_data: {
           currency: "inr",
           product_data: { name },
           unit_amount: price,
         },
-      };
-    }),
+      },
+    ],
     success_url: `${process.env.CLIENT_URL}`,
     cancel_url: `${process.env.CLIENT_URL}`,
   };
@@ -68,7 +68,6 @@ app.post("/create-checkout-session", async (req: Request, res: Response) => {
   }
 });
 
-// listen in port
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
