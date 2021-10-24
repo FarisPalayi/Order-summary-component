@@ -5,7 +5,6 @@ const app = express();
 
 import cors from "cors";
 
-// add multiple origins
 app.use(
   cors({
     origin: [
