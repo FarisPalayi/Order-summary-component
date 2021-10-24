@@ -7,10 +7,7 @@ import cors from "cors";
 
 app.use(
   cors({
-    origin: [
-      "https://order-summary-page-farisp.netlify.app",
-      "http://localhost:3001",
-    ],
+    origin: [`${process.env.CLIENT_URL}`, "http://localhost:3001"],
   })
 );
 
