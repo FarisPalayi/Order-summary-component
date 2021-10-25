@@ -118,9 +118,9 @@ function redirect(url) {
   }
 }
 
-function makePayment(url, productId, errCallback) {
+function makePayment(url, planId, errCallback) {
   var requestBody = {
-    id: productId,
+    id: planId,
   };
 
   var redirectToResponseUrl = function (data) {
@@ -146,8 +146,9 @@ function setBtnSpinner(btnElm, show) {
     btnSpinnerContainer.style.display = "inline";
     btnText.style.display = "none";
   }
+
   if (show === false) {
-    btnElm.disabled = true;
+    btnElm.disabled = false;
     btnSpinnerContainer.style.display = "none";
     btnText.style.display = "block";
   }
@@ -172,6 +173,50 @@ function showErrorBanner(bannerMsg) {
     errorBanner.style.transform = "scale(0.5)";
     errorBanner.style.opacity = "0";
   }, bannerShowDuration);
+}
+
+// dropdown list stuff
+var initialPlanId = 1;
+var planId = initialPlanId;
+
+var planDetails = [
+  { id: 1, name: "Weekly", price: 99, timeFrame: "week" },
+  { id: 2, name: "Monthly", price: 399, timeFrame: "month" },
+  { id: 3, name: "Annual", price: 3999, timeFrame: "year" },
+];
+
+function toggleDropdownVisibility(controlElm, dropdownElm, overlay) {
+  dropdownElm.classList.toggle("hide");
+
+  if (dropdownElm.classList.contains("hide")) {
+    controlElm.setAttribute("aria-expanded", "false");
+    overlay.style.display = "none";
+    return;
+  }
+
+  controlElm.setAttribute("aria-expanded", "true");
+  overlay.style.display = "block";
+}
+
+function changePlanOnSelection(
+  controlElm,
+  planElm,
+  planPriceElm,
+  planDetailsArr
+) {
+  var radioLabel = controlElm.nextElementSibling;
+  var labelText = radioLabel.innerText;
+
+  for (var i = 0; i < planDetailsArr.length; i++) {
+    var planDetailsObj = planDetailsArr[i];
+    if (planDetailsObj.name === labelText) {
+      planPriceElm.innerText =
+        "₹" + planDetailsObj.price + "/" + planDetailsObj.timeFrame;
+      planId = planDetailsObj.id;
+    }
+  }
+
+  planElm.innerText = labelText + " Plan";
 }
 
 // event listeners
@@ -216,13 +261,43 @@ function showErrorBanner(bannerMsg) {
       // var baseUrl = "http://localhost:3000"; // dev-local
       var baseUrl = "https://order-summary-page.herokuapp.com";
       var route = "/create-checkout-session";
-      var productId = 1;
 
-      makePayment(baseUrl + route, productId, function (errMsg) {
+      makePayment(baseUrl + route, planId, function (errMsg) {
         setBtnSpinner(paymentBtn, false);
         paymentBtn.disabled = false;
         errMsg ? showErrorBanner(errMsg) : showErrorBanner();
       });
     };
+  }
+
+  var changePlanBtn = document.querySelector(".js-change-plan-btn");
+  var planDropdown = document.querySelector(".js-plan-dropdown");
+  var planOverlay = document.querySelector(".js-plan-dropdown-overlay");
+
+  function toggleDropdown() {
+    toggleDropdownVisibility(changePlanBtn, planDropdown, planOverlay);
+  }
+
+  changePlanBtn.onclick = toggleDropdown;
+
+  var radioElms = document.querySelectorAll(".js-plan-radio");
+  var planTitle = document.querySelector(".js-plan-title");
+  var planPrice = document.querySelector(".js-plan-price");
+
+  for (var j = 0; j < radioElms.length; j++) {
+    var radioElm = radioElms[j];
+
+    radioElm.onchange = function () {
+      changePlanOnSelection(this, planTitle, planPrice, planDetails);
+    };
+
+    radioElm.onkeyup = function (e) {
+      //! use keyCode and e.key
+      if (e.key === "Escape") {
+        toggleDropdown();
+      }
+    };
+
+    planOverlay.onclick = toggleDropdown;
   }
 })();

@@ -60,6 +60,10 @@ $plan-change-btn-width: 53px;
   color: $desaturated-blue;
 }
 
+.plan__change {
+  position: relative;
+}
+
 .plan__change-btn {
   @include variable(width, --plan-change-btn-width, $plan-change-btn-width);
   @include clamp(font-size, toRem(12), 3.4636vw, toRem(14.08));
@@ -70,4 +74,52 @@ $plan-change-btn-width: 53px;
   &:hover {
     color: lighten($bright-blue, 10);
   }
+}
+
+// plan dropdown
+
+.plan__dropdown-overlay {
+  display: none; //js
+  position: fixed;
+  inset: 0;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.plan__list {
+  position: absolute;
+  margin-top: 2px;
+  left: 50%;
+  transform: translatex(-50%);
+  background-color: #d2e0fb;
+  list-style: none;
+  border-radius: 5px;
+  color: $desaturated-blue;
+  z-index: 1;
+  overflow: hidden;
+  font-size: toRem(14);
+}
+
+.plan__item {
+  min-width: max-content;
+}
+
+.plan__radio {
+  position: absolute;
+  opacity: 0;
+
+  &:focus + .plan__name {
+    background-color: #b7d0ff;
+  }
+
+  &:checked + .plan__name {
+    background-color: #8ab3ff;
+    color: white;
+  }
+}
+
+.plan__name {
+  display: inline-block;
+  width: 100%;
+  padding: 6px 27px;
 }

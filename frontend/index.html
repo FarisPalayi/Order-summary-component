@@ -32,13 +32,37 @@
           <div class="plan">
             <div class="plan__icon"></div>
             <div class="plan__details">
-              <h2 class="plan__title">Annual Plan</h2>
-              <span class="plan__amount">$59.99/year</span>
+              <h2 class="plan__title js-plan-title">Annual Plan</h2>
+              <span class="plan__amount js-plan-price">$59.99/year</span>
             </div>
             <div class="plan__change">
-              <button type="button" class="plan__change-btn" disabled>
+              <button
+                type="button"
+                class="plan__change-btn js-change-plan-btn"
+                aria-controls="plan-list"
+                aria-expanded="false"
+                disabled
+              >
                 Change
               </button>
+              <div
+                class="plan__dropdown-overlay js-plan-dropdown-overlay"
+              ></div>
+              <!-- plan list dropdown --><!-- prettier-ignore -->
+              <ul class="plan__list hide js-plan-dropdown" id="plan-list">
+                <li class="plan__item">
+                  <input type="radio" name="plan" id="annual" class="plan__radio js-plan-radio" />
+                  <label for="annual" class="plan__name">Annual</label>
+                </li>
+                <li class="plan__item">
+                  <input type="radio" name="plan" id="monthly" class="plan__radio js-plan-radio" />
+                  <label for="monthly" class="plan__name">Monthly </label>
+                </li>
+                <li class="plan__item">
+                  <input type="radio" name="plan" id="weekly" class="plan__radio js-plan-radio" />
+                  <label for="weekly" class="plan__name">Weekly</label>
+                </li>
+              </ul>
             </div>
           </div>
           <!-- payment button --><!-- prettier-ignore -->
