@@ -128,12 +128,12 @@ function makePayment(url, planId, errCallback) {
   };
 
   if (window.fetch) {
-    var requestFunc = postWithFetch;
+    var post = postWithFetch;
   } else {
-    var requestFunc = postWithXhr;
+    var post = postWithXhr;
   }
 
-  requestFunc(url, requestBody, redirectToResponseUrl, errCallback);
+  post(url, requestBody, redirectToResponseUrl, errCallback);
 }
 
 // spinner stuff
@@ -165,14 +165,10 @@ function showErrorBanner(bannerMsg) {
   var bannerShowDuration = 2500;
 
   errorBanner.innerText = bannerMsg;
-  errorBanner.style.transitionTimingFunction = "ease-out";
-  errorBanner.style.transform = "scale(1)";
-  errorBanner.style.opacity = "1";
+  errorBanner.classList.add("fade-scale");
 
   setTimeout(function () {
-    errorBanner.style.transitionTimingFunction = "ease-in";
-    errorBanner.style.transform = "scale(0.5)";
-    errorBanner.style.opacity = "0";
+    errorBanner.classList.remove("fade-scale");
   }, bannerShowDuration);
 }
 

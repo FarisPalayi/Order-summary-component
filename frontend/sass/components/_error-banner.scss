@@ -14,3 +14,9 @@
   transition-duration: 300ms;
   transition-timing-function: ease-out;
 }
+
+.fade-scale {
+  transition-timing-function: ease-out;
+  transform: scale(1);
+  opacity: 1;
+}
