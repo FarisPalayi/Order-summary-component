@@ -25,9 +25,24 @@ interface ISubscriptionDetails {
 
 // price details
 const subscriptionDetails: ISubscriptionDetails[] = [
-  { id: 1, name: "weekly subscription", price: 9900, quantity: 1 },
-  { id: 2, name: "monthly subscription", price: 39900, quantity: 1 },
-  { id: 3, name: "annual subscription", price: 399900, quantity: 1 },
+  {
+    id: 1,
+    name: "weekly subscription",
+    price: 9900,
+    quantity: 1,
+  },
+  {
+    id: 2,
+    name: "monthly subscription",
+    price: 39900,
+    quantity: 1,
+  },
+  {
+    id: 3,
+    name: "annual subscription",
+    price: 399900,
+    quantity: 1,
+  },
 ];
 
 function createStripeSession(req: Request) {
