@@ -127,12 +127,13 @@ function makePayment(url, planId, errCallback) {
     redirect(data.url);
   };
 
-  if (!window.fetch) {
-    postWithXhr(url, requestBody, redirectToResponseUrl, errCallback);
-    return;
+  if (window.fetch) {
+    var requestFunc = postWithFetch;
+  } else {
+    var requestFunc = postWithXhr;
   }
 
-  postWithFetch(url, requestBody, redirectToResponseUrl, errCallback);
+  requestFunc(url, requestBody, redirectToResponseUrl, errCallback);
 }
 
 // spinner stuff
@@ -211,8 +212,8 @@ function changePlanOnSelection(
     var planDetailsObj = planDetailsArr[i];
 
     if (planDetailsObj.name === labelText) {
-      planPriceElm.innerText =
-        "₹" + planDetailsObj.price + "/" + planDetailsObj.timeFrame;
+      var txt = "₹" + planDetailsObj.price + "/" + planDetailsObj.timeFrame;
+      planPriceElm.innerText = txt;
       planId = planDetailsObj.id;
     }
   }
