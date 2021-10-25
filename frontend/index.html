@@ -32,8 +32,12 @@
           <div class="plan">
             <div class="plan__icon"></div>
             <div class="plan__details">
-              <h2 class="plan__title js-plan-title">Annual Plan</h2>
-              <span class="plan__amount js-plan-price">$59.99/year</span>
+              <h2 class="plan__title js-plan-title" aria-live="polite">
+                Annual Plan
+              </h2>
+              <span class="plan__amount js-plan-price" aria-live="polite">
+                $59.99/year</span
+              >
             </div>
             <div class="plan__change">
               <button
@@ -51,7 +55,7 @@
               <!-- plan list dropdown --><!-- prettier-ignore -->
               <ul class="plan__list hide js-plan-dropdown" id="plan-list">
                 <li class="plan__item">
-                  <input type="radio" name="plan" id="annual" class="plan__radio js-plan-radio" />
+                  <input type="radio" name="plan" id="annual" class="plan__radio js-plan-radio" checked/>
                   <label for="annual" class="plan__name">Annual</label>
                 </li>
                 <li class="plan__item">

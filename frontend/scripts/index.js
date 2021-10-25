@@ -160,7 +160,7 @@ function showErrorBanner(bannerMsg) {
     bannerMsg = "Something went wrong! Please try again.";
   }
 
-  var errorBanner = document.querySelector(".js-error-banner");
+  var errorBanner = query(".js-error-banner");
   var bannerShowDuration = 2500;
 
   errorBanner.innerText = bannerMsg;
@@ -209,6 +209,7 @@ function changePlanOnSelection(
 
   for (var i = 0; i < planDetailsArr.length; i++) {
     var planDetailsObj = planDetailsArr[i];
+
     if (planDetailsObj.name === labelText) {
       planPriceElm.innerText =
         "₹" + planDetailsObj.price + "/" + planDetailsObj.timeFrame;
@@ -221,83 +222,89 @@ function changePlanOnSelection(
 
 // event listeners
 
-(function () {
-  var btns = document.querySelectorAll("button");
+var doc = document,
+  query = function (selector) {
+    return doc.querySelector(selector);
+  },
+  queryAll = function (selector) {
+    return doc.querySelectorAll(selector);
+  };
 
-  window.onload = function () {
-    if (!btns) {
-      return;
-    }
+var btns = queryAll("button");
 
-    for (var i = 0; i < btns.length; i++) {
-      var btn = btns[i];
-      btn.disabled = false;
+window.onload = function () {
+  if (!btns) {
+    return;
+  }
+
+  for (var i = 0; i < btns.length; i++) {
+    var btn = btns[i];
+    btn.disabled = false;
+  }
+};
+
+var heroImgElm = query(".js-hero-img");
+
+heroImg.onload = function () {
+  if (heroImgElm) {
+    showHeroImg(heroImgElm, imgSource);
+  }
+};
+
+var paymentBtn = query(".js-payment-btn");
+
+if (paymentBtn) {
+  paymentBtn.onclick = function (e) {
+    createRipple(e);
+  };
+}
+
+var form = query(".js-form");
+
+if (form && paymentBtn) {
+  form.onsubmit = function (e) {
+    e.preventDefault();
+    setBtnSpinner(paymentBtn, true);
+
+    // var baseUrl = "http://localhost:3000"; // dev-local
+    var baseUrl = "https://order-summary-page.herokuapp.com";
+    var route = "/create-checkout-session";
+
+    makePayment(baseUrl + route, planId, function (errMsg) {
+      setBtnSpinner(paymentBtn, false);
+      paymentBtn.disabled = false;
+      errMsg ? showErrorBanner(errMsg) : showErrorBanner();
+    });
+  };
+}
+
+var changePlanBtn = query(".js-change-plan-btn");
+var planDropdown = query(".js-plan-dropdown");
+var planOverlay = query(".js-plan-dropdown-overlay");
+
+function toggleDropdown() {
+  toggleDropdownVisibility(changePlanBtn, planDropdown, planOverlay);
+}
+
+changePlanBtn.onclick = toggleDropdown;
+
+var radioElms = queryAll(".js-plan-radio");
+var planTitle = query(".js-plan-title");
+var planPrice = query(".js-plan-price");
+
+for (var j = 0; j < radioElms.length; j++) {
+  var radioElm = radioElms[j];
+
+  radioElm.onchange = function () {
+    changePlanOnSelection(this, planTitle, planPrice, planDetails);
+  };
+
+  radioElm.onkeyup = function (e) {
+    //! use keyCode and e.key
+    if (e.key === "Escape") {
+      toggleDropdown();
     }
   };
 
-  var heroImgElm = document.querySelector(".js-hero-img");
-
-  heroImg.onload = function () {
-    if (heroImgElm) {
-      showHeroImg(heroImgElm, imgSource);
-    }
-  };
-
-  var paymentBtn = document.querySelector(".js-payment-btn");
-
-  if (paymentBtn) {
-    paymentBtn.onclick = function (e) {
-      createRipple(e);
-    };
-  }
-
-  var form = document.querySelector(".js-form");
-
-  if (form && paymentBtn) {
-    form.onsubmit = function (e) {
-      e.preventDefault();
-      setBtnSpinner(paymentBtn, true);
-
-      // var baseUrl = "http://localhost:3000"; // dev-local
-      var baseUrl = "https://order-summary-page.herokuapp.com";
-      var route = "/create-checkout-session";
-
-      makePayment(baseUrl + route, planId, function (errMsg) {
-        setBtnSpinner(paymentBtn, false);
-        paymentBtn.disabled = false;
-        errMsg ? showErrorBanner(errMsg) : showErrorBanner();
-      });
-    };
-  }
-
-  var changePlanBtn = document.querySelector(".js-change-plan-btn");
-  var planDropdown = document.querySelector(".js-plan-dropdown");
-  var planOverlay = document.querySelector(".js-plan-dropdown-overlay");
-
-  function toggleDropdown() {
-    toggleDropdownVisibility(changePlanBtn, planDropdown, planOverlay);
-  }
-
-  changePlanBtn.onclick = toggleDropdown;
-
-  var radioElms = document.querySelectorAll(".js-plan-radio");
-  var planTitle = document.querySelector(".js-plan-title");
-  var planPrice = document.querySelector(".js-plan-price");
-
-  for (var j = 0; j < radioElms.length; j++) {
-    var radioElm = radioElms[j];
-
-    radioElm.onchange = function () {
-      changePlanOnSelection(this, planTitle, planPrice, planDetails);
-    };
-
-    radioElm.onkeyup = function (e) {
-      //! use keyCode and e.key
-      if (e.key === "Escape") {
-        toggleDropdown();
-      }
-    };
-
-    planOverlay.onclick = toggleDropdown;
-  }
-})();
+  planOverlay.onclick = toggleDropdown;
+}
