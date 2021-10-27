@@ -262,6 +262,11 @@ function changePlanOnSelection(
   }
 }
 
+function giveRadioFocus(radioElm) {
+  radioElm.focus();
+  radioElm.checked = true;
+}
+
 // --------- Event listeners ---------
 
 var btns = queryAll("button");
@@ -320,7 +325,10 @@ function toggleDropdown() {
   toggleDropdownVisibility(changePlanBtn, planDropdown, planOverlay);
 }
 
-changePlanBtn.onclick = toggleDropdown;
+changePlanBtn.onclick = function () {
+  toggleDropdown();
+  giveRadioFocus(query(".js-plan-radio"));
+};
 
 var radioElms = queryAll(".js-plan-radio");
 var planTitle = query(".js-plan-title");
