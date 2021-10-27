@@ -81,13 +81,10 @@ button:disabled {
 p {
   width: 100%; // ie11
   max-width: 330px;
-  padding: 0 10px;
   line-height: 1.6;
-  text-align: center;
   color: $desaturated-blue;
   @include clamp(font-size, toRem(15.5), 1.11111vw, toRem(16));
   letter-spacing: -0.2px;
-  margin-bottom: 23px;
 
   @include desktop {
     letter-spacing: 0;

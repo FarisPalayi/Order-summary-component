@@ -44,6 +44,11 @@
   width: 100%;
 }
 
+.card__desc {
+  padding: 0 10px;
+  margin-bottom: 23px;
+}
+
 .card__payment-btn,
 .card__cancel-btn {
   font-size: toRem(15.2);
