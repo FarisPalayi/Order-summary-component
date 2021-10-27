@@ -50,7 +50,8 @@
 }
 
 .card__payment-btn {
-  height: 50px;
+  box-sizing: border-box;
+  padding: 15px;
   width: 100%;
   margin-bottom: toRem(15.2);
   @include clamp(margin-bottom, 24px, 3vw, 31px);

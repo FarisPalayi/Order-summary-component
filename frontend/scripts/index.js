@@ -1,4 +1,7 @@
+// --------- Utils ---------
+
 var doc = document,
+  win = window,
   query = function (selector) {
     return doc.querySelector(selector);
   },
@@ -6,7 +9,8 @@ var doc = document,
     return doc.querySelectorAll(selector);
   };
 
-// Hero Image stuff
+// --------- Hero Image stuff-------------
+
 var imgSource = "../images/illustration-hero.svg";
 var heroImg = new Image(); // creates a new html img element
 heroImg.src = imgSource;
@@ -16,7 +20,8 @@ function setBackgroundImg(elem, imgSrc) {
   elem.style.opacity = "1";
 }
 
-// Ripple stuff
+// --------- Ripple stuff -----------
+
 function createRipple(event) {
   var button = event.currentTarget;
   var circle = document.createElement("span");
@@ -44,11 +49,11 @@ function createRipple(event) {
   };
 }
 
-// payment stuff
+// --------- payment stuff ---------
 
 // to use as fallback if fetch API is not supported
 function postWithXhr(url, body, timeoutInS, callback, errCallback) {
-  if (window.XMLHttpRequest) {
+  if (win.XMLHttpRequest) {
     var xhr = new XMLHttpRequest(); // `var` is function scoped, not block scoped
   } else {
     var xhr = new ActiveXObject("Microsoft.XMLHTTP"); // legacy
@@ -147,8 +152,8 @@ function postWithFetch(url, body, timeoutInS, callback, errCallback) {
 }
 
 function redirect(url) {
-  if (window.location) {
-    window.location = url;
+  if (win.location) {
+    win.location = url;
   }
 }
 
@@ -163,7 +168,7 @@ function makePayment(url, planId, errCallback) {
 
   var timeoutInSeconds = 60;
 
-  if (window.fetch) {
+  if (win.fetch) {
     var post = postWithFetch;
   } else {
     var post = postWithXhr;
@@ -172,9 +177,9 @@ function makePayment(url, planId, errCallback) {
   post(url, requestBody, timeoutInSeconds, redirectToResponseUrl, errCallback);
 }
 
-// spinner stuff
+// --------- Spinner stuff ---------
 
-function setBtnSpinner(btnElm, show) {
+function runBtnSpinner(btnElm, show) {
   var btnText = btnElm.querySelector(".js-spinner-text");
   var btnSpinnerContainer = btnElm.querySelector(".js-spinner-container");
 
@@ -191,7 +196,8 @@ function setBtnSpinner(btnElm, show) {
   }
 }
 
-// error banner stuff
+// --------- Error banner stuff ---------
+
 function showErrorBanner(bannerMsg) {
   if (typeof bannerMsg !== "string") {
     bannerMsg = "Something went wrong! Please try again.";
@@ -208,11 +214,12 @@ function showErrorBanner(bannerMsg) {
   }, bannerShowDuration);
 }
 
-// dropdown list stuff
+// --------- Dropdown list stuff ---------
+
 var initialPlanId = 3;
 var planId = initialPlanId;
 
-var planDetails = [
+var planDetailsData = [
   { id: 1, name: "Weekly", price: 99, timeFrame: "week" },
   { id: 2, name: "Monthly", price: 399, timeFrame: "month" },
   { id: 3, name: "Annual", price: 3999, timeFrame: "year" },
@@ -233,8 +240,9 @@ function toggleDropdownVisibility(controlElm, dropdownElm, overlay) {
 
 function changePlanOnSelection(
   controlElm,
-  planElm,
+  planNameElm,
   planPriceElm,
+  planTimeframeElm,
   planDetailsArr
 ) {
   var radioLabel = controlElm.nextElementSibling;
@@ -244,20 +252,21 @@ function changePlanOnSelection(
     var planDetailsObj = planDetailsArr[i];
 
     if (planDetailsObj.name === labelText) {
-      var txt = "₹" + planDetailsObj.price + "/" + planDetailsObj.timeFrame;
-      planPriceElm.innerText = txt;
+      planNameElm.innerText = labelText + " Plan";
+      planPriceElm.innerText = "₹" + planDetailsObj.price;
+      planTimeframeElm.innerText = planDetailsObj.timeFrame;
+      console.log(planTimeframeElm);
+
       planId = planDetailsObj.id;
     }
   }
-
-  planElm.innerText = labelText + " Plan";
 }
 
-// event listeners
+// --------- Event listeners ---------
 
 var btns = queryAll("button");
 
-window.onload = function () {
+win.onload = function () {
   if (!btns) {
     return;
   }
@@ -289,14 +298,14 @@ var form = query(".js-form");
 if (form && paymentBtn) {
   form.onsubmit = function (e) {
     e.preventDefault();
-    setBtnSpinner(paymentBtn, true);
+    runBtnSpinner(paymentBtn, true);
 
-    // var baseUrl = "http://localhost:3000"; // dev-local
     var baseUrl = "https://order-summary-page.herokuapp.com";
+    // var baseUrl = "http://localhost:3000"; // dev-local
     var route = "/create-checkout-session";
 
     makePayment(baseUrl + route, planId, function (errMsg) {
-      setBtnSpinner(paymentBtn, false);
+      runBtnSpinner(paymentBtn, false);
       paymentBtn.disabled = false;
       errMsg ? showErrorBanner(errMsg) : showErrorBanner();
     });
@@ -315,17 +324,23 @@ changePlanBtn.onclick = toggleDropdown;
 
 var radioElms = queryAll(".js-plan-radio");
 var planTitle = query(".js-plan-title");
-var planPrice = query(".js-plan-price");
+var planPrice = query(".js-plan-price-amt");
+var planTimeframe = query(".js-plan-timeframe");
 
 for (var j = 0; j < radioElms.length; j++) {
   var radioElm = radioElms[j];
 
   radioElm.onchange = function () {
-    changePlanOnSelection(this, planTitle, planPrice, planDetails);
+    changePlanOnSelection(
+      this,
+      planTitle,
+      planPrice,
+      planTimeframe,
+      planDetailsData
+    );
   };
 
   radioElm.onkeyup = function (e) {
-    //! use keyCode and e.key
     if (e.key === "Escape" || e.keyCode === 27) {
       toggleDropdown();
     }
