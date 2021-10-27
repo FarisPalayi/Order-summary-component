@@ -326,7 +326,7 @@ for (var j = 0; j < radioElms.length; j++) {
 
   radioElm.onkeyup = function (e) {
     //! use keyCode and e.key
-    if (e.key === "Escape") {
+    if (e.key === "Escape" || e.keyCode === 27) {
       toggleDropdown();
     }
   };
