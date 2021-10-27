@@ -1,15 +1,22 @@
+var doc = document,
+  query = function (selector) {
+    return doc.querySelector(selector);
+  },
+  queryAll = function (selector) {
+    return doc.querySelectorAll(selector);
+  };
+
 // Hero Image stuff
 var imgSource = "../images/illustration-hero.svg";
 var heroImg = new Image(); // creates a new html img element
 heroImg.src = imgSource;
 
-function showHeroImg(imgElm, imgSrc) {
-  imgElm.style.backgroundImage = "url(" + imgSrc + ")";
-  imgElm.style.opacity = "1";
+function setBackgroundImg(elem, imgSrc) {
+  elem.style.backgroundImage = "url(" + imgSrc + ")";
+  elem.style.opacity = "1";
 }
 
 // Ripple stuff
-
 function createRipple(event) {
   var button = event.currentTarget;
   var circle = document.createElement("span");
@@ -27,7 +34,7 @@ function createRipple(event) {
   var ripple = button.querySelector(".ripple");
 
   if (ripple) {
-    ripple.remove();
+    button.removeChild(circle);
   }
 
   button.appendChild(circle);
@@ -40,7 +47,7 @@ function createRipple(event) {
 // payment stuff
 
 // to use as fallback if fetch API is not supported
-function postWithXhr(url, body, callback, errCallback) {
+function postWithXhr(url, body, timeoutInS, callback, errCallback) {
   if (window.XMLHttpRequest) {
     var xhr = new XMLHttpRequest(); // `var` is function scoped, not block scoped
   } else {
@@ -70,20 +77,33 @@ function postWithXhr(url, body, callback, errCallback) {
 
   xhr.send(JSON.stringify(body));
 
-  // // var timeoutInMinutes = 1;
-  // var timeoutInSeconds = 10; //! temporary value
-  // var timeoutInMilliSeconds = timeoutInSeconds * 1000;
+  var timeoutInMilliSeconds = timeoutInS * 1000;
 
-  // xhr.timeout = timeoutInMilliSeconds;
+  setTimeout(function () {
+    if (xhr.readyState !== 4) {
+      xhr.abort();
+      errCallback("Request timed out! Please try again.");
+    }
+  }, timeoutInMilliSeconds);
+
+  xhr.ontimeout = function () {
+    console.error("Timeout error: " + this.status, this.statusText);
+    errCallback("Request timed out! Please try again.");
+  };
+
   xhr.onerror = function () {
     console.error("Error: " + this.status, this.statusText);
     errCallback("Request failed! Please try again.");
   };
 }
 
-function postWithFetch(url, body, callback, errCallback) {
+function postWithFetch(url, body, timeoutInS, callback, errCallback) {
+  var controller = new AbortController(); // to abort request
+  var signal = controller.signal;
+
   fetch(url, {
     method: "POST",
+    signal: signal,
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -108,8 +128,22 @@ function postWithFetch(url, body, callback, errCallback) {
     }) // redirect
     .catch(function (err) {
       errCallback();
+
+      if (err.name === "AbortError") {
+        console.log("Request aborted");
+        errCallback("Request timed out! Please try again.");
+      }
+
       console.error(err, err.error);
     });
+
+  var timeoutInMilliSeconds = timeoutInS * 1000;
+
+  setTimeout(function () {
+    if (!signal.aborted) {
+      controller.abort();
+    }
+  }, timeoutInMilliSeconds);
 }
 
 function redirect(url) {
@@ -127,13 +161,15 @@ function makePayment(url, planId, errCallback) {
     redirect(data.url);
   };
 
+  var timeoutInSeconds = 60;
+
   if (window.fetch) {
     var post = postWithFetch;
   } else {
     var post = postWithXhr;
   }
 
-  post(url, requestBody, redirectToResponseUrl, errCallback);
+  post(url, requestBody, timeoutInSeconds, redirectToResponseUrl, errCallback);
 }
 
 // spinner stuff
@@ -173,7 +209,7 @@ function showErrorBanner(bannerMsg) {
 }
 
 // dropdown list stuff
-var initialPlanId = 1;
+var initialPlanId = 3;
 var planId = initialPlanId;
 
 var planDetails = [
@@ -219,14 +255,6 @@ function changePlanOnSelection(
 
 // event listeners
 
-var doc = document,
-  query = function (selector) {
-    return doc.querySelector(selector);
-  },
-  queryAll = function (selector) {
-    return doc.querySelectorAll(selector);
-  };
-
 var btns = queryAll("button");
 
 window.onload = function () {
@@ -244,7 +272,7 @@ var heroImgElm = query(".js-hero-img");
 
 heroImg.onload = function () {
   if (heroImgElm) {
-    showHeroImg(heroImgElm, imgSource);
+    setBackgroundImg(heroImgElm, imgSource);
   }
 };
 
