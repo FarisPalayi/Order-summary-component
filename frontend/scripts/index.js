@@ -38,9 +38,7 @@ function createRipple(event) {
 
   var ripple = button.querySelector(".ripple");
 
-  if (ripple) {
-    button.removeChild(circle);
-  }
+  if (ripple) button.removeChild(circle);
 
   button.appendChild(circle);
 
@@ -53,11 +51,9 @@ function createRipple(event) {
 
 // to use as fallback if fetch API is not supported
 function postWithXhr(url, body, timeoutInS, callback, errCallback) {
-  if (win.XMLHttpRequest) {
-    var xhr = new XMLHttpRequest(); // `var` is function scoped, not block scoped
-  } else {
-    var xhr = new ActiveXObject("Microsoft.XMLHTTP"); // legacy
-  }
+  // `var` is function scoped, not block scoped
+  if (win.XMLHttpRequest) var xhr = new XMLHttpRequest();
+  else var xhr = new ActiveXObject("Microsoft.XMLHTTP"); // legacy
 
   xhr.open("POST", url);
   xhr.setRequestHeader("Content-Type", "application/json");
@@ -71,9 +67,7 @@ function postWithXhr(url, body, timeoutInS, callback, errCallback) {
       this.status === serverRequestSuccess
     ) {
       var data = JSON.parse(xhr.responseText);
-      if (data) {
-        callback(data);
-      }
+      if (data) callback(data);
     } else if (this.status !== serverRequestSuccess) {
       console.error("Error: " + this.status, this.statusText);
       errCallback("Request failed! Please try again.");
@@ -116,9 +110,7 @@ function postWithFetch(url, body, timeoutInS, callback, errCallback) {
     body: JSON.stringify(body),
   })
     .then(function (res) {
-      if (res.ok) {
-        return res.json();
-      }
+      if (res.ok) return res.json();
 
       errCallback("Network Error!");
 
@@ -127,9 +119,7 @@ function postWithFetch(url, body, timeoutInS, callback, errCallback) {
       });
     })
     .then(function (data) {
-      if (data) {
-        callback(data);
-      }
+      if (data) callback(data);
     }) // redirect
     .catch(function (err) {
       errCallback();
@@ -145,16 +135,12 @@ function postWithFetch(url, body, timeoutInS, callback, errCallback) {
   var timeoutInMilliSeconds = timeoutInS * 1000;
 
   setTimeout(function () {
-    if (!signal.aborted) {
-      controller.abort();
-    }
+    if (!signal.aborted) controller.abort();
   }, timeoutInMilliSeconds);
 }
 
 function redirect(url) {
-  if (win.location) {
-    win.location = url;
-  }
+  if (win.location) win.location = url;
 }
 
 function makePayment(url, planId, errCallback) {
@@ -168,11 +154,8 @@ function makePayment(url, planId, errCallback) {
 
   var timeoutInSeconds = 60;
 
-  if (win.fetch) {
-    var post = postWithFetch;
-  } else {
-    var post = postWithXhr;
-  }
+  if (win.fetch) var post = postWithFetch;
+  else var post = postWithXhr;
 
   post(url, requestBody, timeoutInSeconds, redirectToResponseUrl, errCallback);
 }
@@ -199,9 +182,8 @@ function runBtnSpinner(btnElm, show) {
 // --------- Error banner stuff ---------
 
 function showErrorBanner(bannerMsg) {
-  if (typeof bannerMsg !== "string") {
+  if (typeof bannerMsg !== "string")
     bannerMsg = "Something went wrong! Please try again.";
-  }
 
   var errorBanner = query(".js-error-banner");
   var bannerShowDuration = 2500;
@@ -272,9 +254,7 @@ function giveRadioFocus(radioElm) {
 var btns = queryAll("button");
 
 win.onload = function () {
-  if (!btns) {
-    return;
-  }
+  if (!btns) return;
 
   for (var i = 0; i < btns.length; i++) {
     var btn = btns[i];
@@ -285,9 +265,7 @@ win.onload = function () {
 var heroImgElm = query(".js-hero-img");
 
 heroImg.onload = function () {
-  if (heroImgElm) {
-    setBackgroundImg(heroImgElm, imgSource);
-  }
+  if (heroImgElm) setBackgroundImg(heroImgElm, imgSource);
 };
 
 var paymentBtn = query(".js-payment-btn");
@@ -349,9 +327,7 @@ for (var j = 0; j < radioElms.length; j++) {
   };
 
   radioElm.onkeyup = function (e) {
-    if (e.key === "Escape" || e.keyCode === 27) {
-      toggleDropdown();
-    }
+    if (e.key === "Escape" || e.keyCode === 27) toggleDropdown();
   };
 
   planOverlay.onclick = toggleDropdown;
