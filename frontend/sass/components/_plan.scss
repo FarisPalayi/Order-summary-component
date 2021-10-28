@@ -23,6 +23,10 @@ $plan-change-btn-width: 53px;
 
   background-color: $very-pale-blue;
   border-radius: 13px;
+
+  > * {
+    float: left; // for IE
+  }
 }
 
 .plan__icon {

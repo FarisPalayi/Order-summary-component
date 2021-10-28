@@ -34,7 +34,7 @@ function createRipple(event) {
   circle.style.width = circle.style.height = diameter + "px";
   circle.style.left = circleLeftPositionOnXAxix - radius + "px"; // subtracting radius to put it on the center
   circle.style.top = circleTopPositionOnYAxix - radius + "px"; // here too
-  circle.classList.add("ripple");
+  if (circle.classList) circle.classList.add("ripple");
 
   var ripple = button.querySelector(".ripple");
 
@@ -208,7 +208,9 @@ var planDetailsData = [
 ];
 
 function toggleDropdownVisibility(controlElm, dropdownElm, overlay) {
-  dropdownElm.classList.toggle("hide");
+  dropdownElm.classList.contains("hide")
+    ? dropdownElm.classList.remove("hide")
+    : dropdownElm.classList.add("hide");
 
   if (dropdownElm.classList.contains("hide")) {
     controlElm.setAttribute("aria-expanded", "false");
@@ -237,7 +239,6 @@ function changePlanOnSelection(
       planNameElm.innerText = labelText + " Plan";
       planPriceElm.innerText = "₹" + planDetailsObj.price;
       planTimeframeElm.innerText = planDetailsObj.timeFrame;
-      console.log(planTimeframeElm);
 
       planId = planDetailsObj.id;
     }
@@ -332,3 +333,8 @@ for (var j = 0; j < radioElms.length; j++) {
 
   planOverlay.onclick = toggleDropdown;
 }
+
+win.onerror = function () {
+  showErrorBanner("some error has occurred");
+  console.error("error on load");
+};

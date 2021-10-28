@@ -47,6 +47,10 @@
 .card__desc {
   padding: 0 10px;
   margin-bottom: 23px;
+
+  @include desktop {
+    margin-bottom: 20px;
+  }
 }
 
 .card__payment-btn,
