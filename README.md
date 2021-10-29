@@ -18,6 +18,7 @@ This is a solution to the [Order summary card challenge on Frontend Mentor](http
   - [My process](#my-process)
     - [Built with 🛠](#built-with-)
       - [Deployed on:](#deployed-on)
+    - [Site Architecture](#site-architecture)
     - [What I learned](#what-i-learned)
     - [How it's done](#how-its-done)
       - [Blur-up image loading](#blur-up-image-loading)
@@ -117,6 +118,16 @@ feel free to make a pull request or issue.
 - Netlify
 - Heroku
 
+### Site Architecture
+
+- I split my files into two folders, frontend and backend. Mainly because I wanted to deploy the frontend on Netlify and backend on Heroku.
+- I used a simple format/method when writing commit messages. By adding certain keywords like **chore**, **build**, and **feat**, I made sure the commit messages are more organized and readable. (I got this method from the VueJs github repository.)
+
+  - chore: if it is a small/mundane task
+  - feat: when added new feature
+  - build: build, deployment related changes
+  - refactor: when rewriting or making changes to existing code(refactoring)
+
 ### What I learned
 
 I learned **_a lot of stuff_** while doing this project.
@@ -188,31 +199,14 @@ btn.onclick = func2;
     <summary>Get the identifier of a vscode extension</summary>
   </details>
 
-- I used a simple format/method when writing commit messages. By adding certain keywords like **chore:**, **build:**, **feat:** I made sure the commit messages are more organized and readable. I got this method from the VueJs github repository.
-
-  - chore: if it is a small/mundane task
-  - feat: when added new feature
-  - build: build, deployment related changes
-  - refactor: when rewriting or making changes to existing code(refactoring)
-
 - I learned some new git commands as well:
   - `git add -p` : It can be used to stage only the desired changes to git. i.e. it'll make it possible to stage/add chunks/hunks of changes rather than all the changes.
   - `git reflog` - Kinda like `git log`, but gives more info. It can be used to undo even a hard reset.
   - `git merge --abort` - To abort a merge and go back.
 
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-
-```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
-```
-
 ### How it's done
+
+High level overview of how some features are implemented.
 
 #### Blur-up image loading
 
