@@ -29,9 +29,7 @@ This is a solution to the [Order summary card challenge on Frontend Mentor](http
 
 ### The challenge 🎯
 
-Users should be able to:
-
-- See hover states for interactive elements
+- Users should be able to see hover states for interactive elements
 - Make the site compatible with IE10 and IE11.
 - Do not use any pollyfills or tools like typescript or babel to achieve that.
 
@@ -47,12 +45,12 @@ Users should be able to:
 
 ### Features ✨
 
+- Stripe payment
 - Blur image loading
 - Button ripple effect
-- Fluidly responsive
-- Stripe payment
-- Conventional loading spinner on button
 - IE10, IE11 compatible
+- Fluidly responsive
+- Conventional loading spinner on button
 - Error snackbar on request failure
 
 ### Supported Browsers 🌐
@@ -64,32 +62,34 @@ Users should be able to:
 - Opera
 - IE11
 - IE10
-  If you are a mac user, I'd appreciate it if you check it on safari and let me know if it works on it or not.
-  feel free to make a pull request or issue.
+
+**If you are a mac user**, I'd appreciate it if you check it on safari and let me know if it works on it or not.
+feel free to make a pull request or issue.
 
 ### Project File Structure 🏗
 
 ```
 .
-├── design
-├── images
-├── sass
-│   ├── abstracts
-|       ├── _colors.scss
-|       └── _functions.scss
-|       └── _mixins.scss
-│   └── components
-|       ├── _plan.scss
-│   └── _global.scss
-│   └── style.scss
-├── scripts
-│   ├── index.js
-├── .gitignore
-├── index.html
-├── package.json
-├── postcss.config.js
-├── README.md
-└── snowpack.config.js
+├── .vscode
+│   ├── extensions.json
+├── frontend
+│   ├── design
+│   └── images
+│   └── sass
+│   └── scripts
+│   └── index.html
+│   └── .gitignore
+│   └── package.json
+│   └── snowpack.config.js
+├── server
+│   ├── server.ts
+│   └── .env
+│   └── Procfile
+│   └── .gitignore
+│   └── package.json
+│   └── tsconfig.json
+├── .prettierrc.json
+└── README.md
 ```
 
 ### Links 🔗
@@ -121,8 +121,8 @@ Users should be able to:
 
 I learned **_a lot of stuff_** while doing this project.
 
-- Firstly, I learned how to use Stripe to make basic payments. Although, I have a long way to go before I understand all its APIs and how it actually works.
-- Since I wrote javascript code that needed to be compatible with IE, I got an overview of which js features works with IE and which does not. Some things that IE does not support:
+- Firstly, I **learned how to use Stripe to make basic payments**. Although, I have a long way to go before I understand all its APIs and how it actually works.
+- Since I wrote javascript code that needed to be compatible with IE, I got an overview of which js features works with IE and which does not. **Some things that IE does not support:**
 
   - In CSS
 
@@ -146,9 +146,9 @@ I learned **_a lot of stuff_** while doing this project.
     - `addEventListener()` (IE8 and below)
     - Array methods like `forEach()`, `reduce()`, `map()` (IE8 and below)
 
-- Got to know a built-in Sass function `math.is-unitless()`. Which checks if the passed argument has a unit or not, and returns a boolean based on that. I used it in the `toRem()` function to avoid accidentally passing values that has units.
+- Got to know a **built-in Sass function `math.is-unitless()`**. Which checks if the passed argument has a unit or not, and returns a boolean based on that. I used it in the `toRem()` function to avoid accidentally passing values that has units.
 - Learned how to use a base64 encoded image in an SVG.
-- I didn't really know that there was a difference between `.addEventListener()` and `.onclick`, which is being that, while `.addEventListener()` can be used as many s as we want, the `.onclick` can be used only once. Which makes sense when thinking about it, because when using `.onclick`, we are just directly changing a method. So what that means that:
+- I didn't really know that there was a difference between `.addEventListener()` and `.onclick`, which is being that, while **`.addEventListener()` can be used as many s as we want, the `.onclick` can be used only once.** Which makes sense when thinking about it, because when using `.onclick`, we are just directly changing a method. So what that means that:
 
 ```js
 // while here the func and func2 is called
@@ -188,12 +188,12 @@ btn.onclick = func2;
     <summary>Get the identifier of a vscode extension</summary>
   </details>
 
-- I used a simple format/method to when writing commit messages. by adding certain keywords like **chore:**, **build:**, **feat:** to make the commit messages more organized and readable, which I got from the VueJs github repository.
+- I used a simple format/method when writing commit messages. By adding certain keywords like **chore:**, **build:**, **feat:** I made sure the commit messages are more organized and readable. I got this method from the VueJs github repository.
 
   - chore: if it is a small/mundane task
   - feat: when added new feature
   - build: build, deployment related changes
-  - refactor: when rewriting/making changes to existing code(refactoring)
+  - refactor: when rewriting or making changes to existing code(refactoring)
 
 - I learned some new git commands as well:
   - `git add -p` : It can be used to stage only the desired changes to git. i.e. it'll make it possible to stage/add chunks/hunks of changes rather than all the changes.
