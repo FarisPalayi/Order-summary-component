@@ -119,7 +119,7 @@ Users should be able to:
 
 I learned **a lot of stuff** while doing this project.
 
-- Firstly, I learned how to use Stripe to make basic payments. Though, I have a long way to go before I understand all its APIs and how it actually works.
+- Firstly, I learned how to use Stripe to make basic payments. Although, I have a long way to go before I understand all its APIs and how it actually works.
 - Since I wrote javascript code that needed to be compatible with IE, I got an overview of which js features works with IE and which does not. Some things that IE does not support:
 
   - CSS
@@ -146,6 +146,17 @@ I learned **a lot of stuff** while doing this project.
 
 - Got to know a built-in Sass function `math.is-unitless()`. Which checks if the passed argument has a unit or not, and returns a boolean based on that. I used it in the `toRem()` function to avoid accidentally passing values that has units.
 - Learned how to use a base64 encoded image in an SVG.
+- I didn't really know that there was a difference between `.addEventListener()` and `.onclick`, which is being that, while `.addEventListener()` can be used as many s as we want, the `.onclick` can be used only once. Which makes sense when thinking about it, because when using `.onclick`, we are just directly changing a method. So what that means that:
+
+```js
+// while here the func and func2 is called
+btn.addEventListener("click", func);
+btn.addEventListener("click", func2);
+
+// here, only the func2 is called
+btn.onclick = func;
+btn.onclick = func2;
+```
 
 <!-- prettier-ignore -->
 ```html
@@ -157,7 +168,7 @@ I learned **a lot of stuff** while doing this project.
 
 - Also, learned how to make an XMLHttpRequest(xhr). This was what used to make requests before the Fetch API.
 - Learned how to get a recommended vscode extension notification using the .vscode/extensions.json file.
-  By adding an extension's identifier as the value of `recommendations` in the extensions.json file in the .vscode directory. For example: vscode .env syntax highlighter extension's identifier is "esbenp.prettier-vscode". To show that as a recommended extension, add
+  By adding an extension's identifier as the value of `recommendations` in the extensions.json file in the .vscode directory. For example: vscode .env syntax highlighter extension's identifier is "irongeek.vscode-env". To show that as a recommended extension, add
 
   ```json
   // .vscode/extensions.json
@@ -175,17 +186,17 @@ I learned **a lot of stuff** while doing this project.
     <summary>Get the identifier of a vscode extension</summary>
   </details>
 
-- I used certain format to commits. by adding certain keywords like **chore:**, **build:**, **feat:** to make the commit messages more organized and readable, which I got from the VueJs github repository.
+- I used a simple format/method to when writing commit messages. by adding certain keywords like **chore:**, **build:**, **feat:** to make the commit messages more organized and readable, which I got from the VueJs github repository.
 
   - chore: if it is a small/mundane task
   - feat: when added new feature
   - build: build, deployment related changes
-  - refactor: when rewriting existing code(refactoring)
+  - refactor: when rewriting/making changes to existing code(refactoring)
 
 - I learned some new git commands as well:
-  - `git add -p` : It can be used to stage only the desired changes to git. ie. it'll make it possible to stage chunks/hunks of changes rather all the changes.
-  - `git reflog` - Kinda like `git log`, but gives more info. It can be used to undo even a hard rest.
-  - `git merge --abort` - To abort a merge
+  - `git add -p` : It can be used to stage only the desired changes to git. i.e. it'll make it possible to stage/add chunks/hunks of changes rather than all the changes.
+  - `git reflog` - Kinda like `git log`, but gives more info. It can be used to undo even a hard reset.
+  - `git merge --abort` - To abort a merge and go back.
 
 ```css
 .proud-of-this-css {
@@ -198,10 +209,6 @@ const proudOfThisFunc = () => {
   console.log("🎉");
 };
 ```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### How it's done
 
