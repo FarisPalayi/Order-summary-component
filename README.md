@@ -32,7 +32,7 @@ This is a solution to the [Order summary card challenge on Frontend Mentor](http
 Users should be able to:
 
 - See hover states for interactive elements
-- Make it support IE10 and IE11.
+- Make the site compatible with IE10 and IE11.
 - Do not use any pollyfills or tools like typescript or babel to achieve that.
 
 ### Screenshot 📸
@@ -64,6 +64,8 @@ Users should be able to:
 - Opera
 - IE11
 - IE10
+  If you are a mac user, I'd appreciate it if you check it on safari and let me know if it works on it or not.
+  feel free to make a pull request or issue.
 
 ### Project File Structure 🏗
 
@@ -117,12 +119,12 @@ Users should be able to:
 
 ### What I learned
 
-I learned **a lot of stuff** while doing this project.
+I learned **_a lot of stuff_** while doing this project.
 
 - Firstly, I learned how to use Stripe to make basic payments. Although, I have a long way to go before I understand all its APIs and how it actually works.
 - Since I wrote javascript code that needed to be compatible with IE, I got an overview of which js features works with IE and which does not. Some things that IE does not support:
 
-  - CSS
+  - In CSS
 
     - CSS Custom Properties (CSS Variables)
     - Full support of Flexbox
@@ -131,7 +133,7 @@ I learned **a lot of stuff** while doing this project.
     - CSS logical properties. Eg: `inset`
     - `fit-content`, `min-content`, `max-content`
 
-  - Javascript
+  - In Javascript
 
     - Arrow functions
     - Promises
