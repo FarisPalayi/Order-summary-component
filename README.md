@@ -202,7 +202,8 @@ btn.onclick = func2;
 - I learned some new git commands as well:
   - `git add -p` : It can be used to stage only the desired changes to git. i.e. it'll make it possible to stage/add chunks/hunks of changes rather than all the changes.
   - `git reflog` - Kinda like `git log`, but gives more info. It can be used to undo even a hard reset.
-  - `git merge --abort` - To abort a merge and go back.
+  - `git merge --abort` - To abort a merge and go back. Useful when there are a lot of merge conflicts and you simply go back to pervious state.
+  - `git reset --merge` - to reset a merge. Like resetting(going back to) a commit, but for merges.
 
 ### How it's done
 
