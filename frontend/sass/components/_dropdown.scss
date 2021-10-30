@@ -1,0 +1,50 @@
+@use "../abstracts/colors" as *;
+
+.plan__dropdown-overlay {
+  display: none; //js
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.plan__list {
+  position: absolute;
+  margin-top: 2px;
+  left: 50%;
+  transform: translatex(-50%);
+  background-color: #d2e0fb;
+  list-style: none;
+  border-radius: 5px;
+  color: $desaturated-blue;
+  z-index: 1;
+  overflow: hidden;
+  font-size: toRem(14);
+}
+
+.plan__item {
+  min-width: max-content;
+}
+
+.plan__radio {
+  position: absolute;
+  opacity: 0;
+
+  &:focus + .plan__name {
+    background-color: #b7d0ff;
+  }
+
+  &:checked + .plan__name {
+    background-color: #8ab3ff;
+    color: white;
+  }
+}
+
+.plan__name {
+  display: inline-block;
+  width: 100%;
+  padding: 6px 27px;
+}
