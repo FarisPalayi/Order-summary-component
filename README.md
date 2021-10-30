@@ -148,7 +148,8 @@ I learned **_a lot of stuff_** while doing this project.
 
     - Arrow functions
     - Promises
-    - Fetch API
+    - JS Modules
+    - Fetch API (since it's a promise)
     - Async await
     - Destructuring
     - Spread, rest syntax
@@ -156,6 +157,7 @@ I learned **_a lot of stuff_** while doing this project.
     - `let` and `const` (IE10 and below)
     - `addEventListener()` (IE8 and below)
     - Array methods like `forEach()`, `reduce()`, `map()` (IE8 and below)
+    - event.key (use event.keyCode instead)
 
 - Got to know a **built-in Sass function `math.is-unitless()`**. Which checks if the passed argument has a unit or not, and returns a boolean based on that. I used it in the `toRem()` function to avoid accidentally passing values that has units.
 - Learned how to use a base64 encoded image in an SVG.
