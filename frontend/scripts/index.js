@@ -34,6 +34,7 @@ function createRipple(event) {
   circle.style.width = circle.style.height = diameter + "px";
   circle.style.left = circleLeftPositionOnXAxix - radius + "px"; // subtracting radius to put it on the center
   circle.style.top = circleTopPositionOnYAxix - radius + "px"; // here too
+
   if (circle.classList) circle.classList.add("ripple");
 
   var ripple = button.querySelector(".ripple");
@@ -205,12 +206,10 @@ var planDetailsData = [
   { id: 1, name: "Weekly", price: 99, timeFrame: "week" },
   { id: 2, name: "Monthly", price: 399, timeFrame: "month" },
   { id: 3, name: "Annual", price: 3999, timeFrame: "year" },
-];
+]; // I know I shoulda fetch this. But, I didn't wanna configure fetch and xhr functions in order support that.
 
 function toggleDropdownVisibility(controlElm, dropdownElm, overlay) {
-  dropdownElm.classList.contains("hide")
-    ? dropdownElm.classList.remove("hide")
-    : dropdownElm.classList.add("hide");
+  dropdownElm.classList.toggle("hide");
 
   if (dropdownElm.classList.contains("hide")) {
     controlElm.setAttribute("aria-expanded", "false");
