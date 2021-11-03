@@ -47,7 +47,7 @@ This is a solution to the [Order summary card challenge on Frontend Mentor](http
 ### Features ✨
 
 - Stripe payment
-- Blur image loading
+- Blur-up image loading
 - Button ripple effect
 - IE10, IE11 compatible
 - Fluidly responsive
@@ -71,18 +71,18 @@ feel free to make a pull request or issue.
 
 ```
 .
-├── .vscode
+├── .vscode/
 │   ├── extensions.json
-├── frontend
-│   ├── design
-│   └── images
-│   └── sass
-│   └── scripts
+├── frontend/
+│   ├── design/
+│   └── images/
+│   └── sass/
+│   └── scripts/
 │   └── index.html
 │   └── .gitignore
 │   └── package.json
 │   └── snowpack.config.js
-├── server
+├── server/
 │   ├── server.ts
 │   └── .env
 │   └── Procfile
@@ -182,6 +182,7 @@ btn.onclick = func2;
 ```
 
 - Also, learned how to make an XMLHttpRequest(xhr). This was what used to make requests before the Fetch API.
+- I mostly wrote my `font-size` values in `px` unit on the root and in `rem` everywhere else. Because, that way I can change font sizes relatively throughout the site pretty easily by only changing the root font-size. But, turned out, It will affect accessibility badly. Because, when a user sets a larger/smaller font on their browser, it won't take effect since the font size is set using `px` on the root. So, I used `rem` unit on the root instead. So that it will be relative to the user's preferred font size. Big thanks _ and _ for helping me out on it.
 - Learned how to get a recommended vscode extension notification using the .vscode/extensions.json file.
   By adding an extension's identifier as the value of `recommendations` in the extensions.json file in the .vscode directory. For example: vscode .env syntax highlighter extension's identifier is "irongeek.vscode-env". To show that as a recommended extension, add
 
@@ -204,8 +205,10 @@ btn.onclick = func2;
 - I learned some new git commands as well:
   - `git add -p` : It can be used to stage only the desired changes to git. i.e. it'll make it possible to stage/add chunks/hunks of changes rather than all the changes.
   - `git reflog` - Kinda like `git log`, but gives more info. It can be used to undo even a hard reset.
-  - `git merge --abort` - To abort a merge and go back. Useful when there are a lot of merge conflicts and you simply go back to pervious state.
+  - `git merge --abort` - To abort a merge and go back. Useful when there are a lot of merge conflicts and you simply wanna go back to the previous state.
   - `git reset --merge` - to reset a merge. Like resetting(going back to) a commit, but for merges.
+- Furthermore, I implemented a bunch of best practices that I've heard before like,
+  - Don't show a user a button that does not work (UX) <!--! add more if there's any -->
 
 ### How it's done
 
