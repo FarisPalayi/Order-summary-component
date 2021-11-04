@@ -11,6 +11,13 @@
 
 .card__img-bg {
   @include clamp(height, 160px, 42vw, 220px);
+
+  // use aspect ratio for img height if it is available
+  @supports (aspect-ratio: 451/220) {
+    aspect-ratio: 451/220;
+    @include clamp(height, auto, auto, auto);
+  }
+
   position: relative;
   isolation: isolate;
   background-color: $bright-blue; // fallback

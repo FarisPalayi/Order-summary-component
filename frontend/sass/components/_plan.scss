@@ -2,9 +2,9 @@
 @use "abstracts/functions" as *;
 @use "abstracts/mixins" as *;
 
-$plan-gap: 20px;
-$plan-icon-width: 48px;
-$plan-change-btn-width: 53px;
+$plan-gap: toRem(20);
+$plan-icon-width: toRem(48);
+$plan-change-btn-width: toRem(53);
 
 .plan {
   --plan-gap: #{$plan-gap};
@@ -16,10 +16,10 @@ $plan-change-btn-width: 53px;
   flex-wrap: wrap;
   @include flex-gap($plan-gap); // fallback
   @include flex-gap(var(--plan-gap));
-  @include clamp(margin-bottom, 24px, 6.3944vw, 33px);
+  @include clamp(margin-bottom, toRem(24), 6.3944vw, toRem(33));
 
   width: 100%;
-  @include clamp(padding, 16px, 4.26288vw, 24px);
+  @include clamp(padding, toRem(16), 4.26288vw, toRem(24));
 
   background-color: $very-pale-blue;
   border-radius: 13px;
@@ -31,11 +31,12 @@ $plan-change-btn-width: 53px;
 
 .plan__icon {
   @include variable(width, --plan-icon-width, $plan-icon-width);
-  height: 49px;
+  height: toRem(49);
 
   border-radius: 50%;
   background-image: url("../images/icon-music.svg");
   background-repeat: no-repeat;
+  background-size: 100%;
   background-position: center;
 }
 
@@ -69,6 +70,7 @@ $plan-change-btn-width: 53px;
 }
 
 .plan__change-btn {
+  min-width: fit-content;
   @include variable(width, --plan-change-btn-width, $plan-change-btn-width);
   @include clamp(font-size, toRem(12), 3.4636vw, toRem(14.08));
   font-weight: 900;

@@ -20,7 +20,7 @@
 .card {
   margin: 24px;
   width: 100%; // ie11
-  max-width: 450px;
+  max-width: toRem(450);
 
   border-radius: $card-bd-radius;
   background-color: $white;

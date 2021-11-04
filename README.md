@@ -209,6 +209,7 @@ btn.onclick = func2;
   - `git reset --merge` - to reset a merge. Like resetting(going back to) a commit, but for merges.
 - Furthermore, I implemented a bunch of best practices that I've heard before like,
   - Don't show a user a button that does not work (UX) <!--! add more if there's any -->
+  - Don't use CSS style related classes to get an element in javascript or in testing. Use a prefixed class or other attributes, for eg: `data` attributes. (I used a `js-` prefix in this project)
 
 ### How it's done
 
@@ -267,9 +268,7 @@ steps:
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+This project will be my last project where I focus on making the site cross-compatible with Internet Explorer Browser. Coding for IE is a nightmare and fortunately (and finally), Microsoft has officially declared its retirement. IE is no longer available in the newest Windows 11 as well.
 
 ### Useful resources
 
@@ -280,6 +279,6 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Author
 
-- Frontend Mentor - [@farispalayi](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@farispalayi](https://www.twitter.com/yourusername)
-- LinkedIn - [@farispalayi](https://www.linkedin.com/in/farispalayi/)
+- Frontend Mentor - [@farispalayi](https://www.frontendmentor.io/profile/farispalayi)
+- Twitter - [@farispalayi](https://www.twitter.com/farispalayi)
+- LinkedIn - [@farispalayi](https://www.linkedin.com/in/farispalayi)

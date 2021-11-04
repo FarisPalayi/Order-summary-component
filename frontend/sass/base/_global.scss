@@ -85,7 +85,7 @@ button:disabled {
 
 p {
   width: 100%; // ie11
-  max-width: 330px;
+  max-width: toRem(330);
   line-height: 1.6;
   color: $desaturated-blue;
   @include clamp(font-size, toRem(15.5), 1.11111vw, toRem(16));

@@ -153,12 +153,25 @@ function makePayment(url, planId, errCallback) {
     redirect(data.url);
   };
 
+  var stopBtnSpinner = function () {
+    runBtnSpinner(paymentBtn, false);
+  };
+
   var timeoutInSeconds = 60;
 
   if (win.fetch) var post = postWithFetch;
   else var post = postWithXhr;
 
-  post(url, requestBody, timeoutInSeconds, redirectToResponseUrl, errCallback);
+  post(
+    url,
+    requestBody,
+    timeoutInSeconds,
+    function (data) {
+      redirectToResponseUrl(data);
+      stopBtnSpinner();
+    },
+    errCallback
+  );
 }
 
 // --------- Spinner stuff ---------
@@ -246,7 +259,6 @@ function changePlanOnSelection(
 
 function giveRadioFocus(radioElm) {
   radioElm.focus();
-  radioElm.checked = true;
 }
 
 // --------- Event listeners ---------
