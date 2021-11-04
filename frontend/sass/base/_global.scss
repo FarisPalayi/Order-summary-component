@@ -66,9 +66,14 @@ button {
   user-select: none;
   cursor: pointer;
 
+  &:focus,
   &:focus-visible {
     outline: dotted lighten($bright-blue, 15) 2px;
     outline-offset: 2px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
   }
 }
 
