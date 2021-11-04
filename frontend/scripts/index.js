@@ -206,7 +206,7 @@ var planDetailsData = [
   { id: 1, name: "Weekly", price: 99, timeFrame: "week" },
   { id: 2, name: "Monthly", price: 399, timeFrame: "month" },
   { id: 3, name: "Annual", price: 3999, timeFrame: "year" },
-]; // I know I shoulda fetch this. But, I didn't wanna configure fetch and xhr functions in order support that.
+]; // I know I shoulda fetch this. But, I didn't wanna configure fetch and xhr functions in order do that.
 
 function toggleDropdownVisibility(controlElm, dropdownElm, overlay) {
   dropdownElm.classList.toggle("hide");
@@ -330,8 +330,12 @@ for (var j = 0; j < radioElms.length; j++) {
     if (e.key === "Escape" || e.keyCode === 27) toggleDropdown();
   };
 
-  planOverlay.onclick = toggleDropdown;
+  radioElm.onkeydown = function (e) {
+    if (e.key === "Tab") toggleDropdown(); //! add keyCode
+  };
 }
+
+planOverlay.onclick = toggleDropdown;
 
 win.onerror = function () {
   showErrorBanner("some error has occurred");
