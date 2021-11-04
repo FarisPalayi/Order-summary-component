@@ -270,6 +270,12 @@ steps:
 
 This project will be my last project where I focus on making the site cross-compatible with Internet Explorer Browser. Coding for IE is a nightmare and fortunately (and finally), Microsoft has officially declared its retirement. IE is no longer available in the newest Windows 11 as well.
 
+Being that said, **my next focus will be on learning web architectures and best practices**; especially in Js and CSS - or frontend code. Because, I still have no idea how to structure the code and how to architect its parts and how to effectively communicate from one part to another. Currently, I make those decisions solely based on my preferences and gut feelings.
+
+So, currently, I'm currently looking for resources to learn that. If you happen to know any good ones, I'd greatful if you can share that with me.
+
+Also, I'll be learning NuxtJS little by little.
+
 ### Useful resources
 
 - [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
