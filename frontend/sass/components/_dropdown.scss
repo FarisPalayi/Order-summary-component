@@ -27,6 +27,10 @@
 
 .plan__item {
   min-width: max-content;
+
+  &:hover {
+    background-color: lighten(#8ab3ff, 12);
+  }
 }
 
 .plan__radio {
@@ -44,6 +48,7 @@
 }
 
 .plan__name {
+  cursor: pointer;
   display: inline-block;
   width: 100%;
   padding: 6px 27px;
