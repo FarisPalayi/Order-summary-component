@@ -121,9 +121,9 @@ feel free to make a pull request or issue.
 ### Site Architecture
 
 - I split my files into two folders, frontend and backend. Mainly because I wanted to deploy the frontend on Netlify and backend on Heroku.
-- I used a simple format/method when writing commit messages. By adding certain keywords like **chore**, **build**, and **feat**, I made sure the commit messages are more organized and readable. (I got this method from the VueJs github repository.)
+- I used a simple format/method when writing commit messages. By prefixing certain keywords like **chore**, **build**, and **feat** to commit messages, I made sure the commit messages are more organized and readable. (I got this method from the VueJs github repository)
 
-  - chore: if it is a small/mundane task
+  - chore: if it is a small task/change
   - feat: when added new feature
   - build: build, deployment related changes
   - refactor: when rewriting or making changes to existing code(refactoring)
@@ -132,7 +132,7 @@ feel free to make a pull request or issue.
 
 I learned **_a lot of stuff_** while doing this project.
 
-- Firstly, I **learned how to use Stripe to make basic payments**. Although, I have a long way to go before I understand all its APIs and how it actually works.
+- Firstly, I **learned how to use Stripe to make basic payments**. Although, I have a long way to go before I understand all of its APIs and how it actually works.
 - Since I wrote javascript code that needed to be compatible with IE, I got an overview of which js features works with IE and which does not. **Some things that IE does not support:**
 
   - In CSS
@@ -161,7 +161,16 @@ I learned **_a lot of stuff_** while doing this project.
 
 - Got to know a **built-in Sass function `math.is-unitless()`**. Which checks if the passed argument has a unit or not, and returns a boolean based on that. I used it in the `toRem()` function to avoid accidentally passing values that has units.
 - Learned how to use a base64 encoded image in an SVG.
-- I didn't really know that there was a difference between `.addEventListener()` and `.onclick`, which is being that, while **`.addEventListener()` can be used as many s as we want, the `.onclick` can be used only once.** Which makes sense when thinking about it, because when using `.onclick`, we are just directly changing a method. So what that means that:
+
+<!-- prettier-ignore -->
+```html
+<!-- unrelated attributes and stuff are omitted for brevity -->
+<svg>
+  <image xlink:href="data:image/png;base64,iVBORw0KG..." /> <!-- 👈 base64 image goes here -->
+</svg>
+```
+
+- I didn't really know that there was a difference between `.addEventListener()` and `.onclick`, which is, while **`.addEventListener()` can be used as many s as we want, the `.onclick` can only be used once.** Which makes sense when thinking about it, because when using `.onclick`, we are just directly changing a method. So:
 
 ```js
 // while here the func and func2 is called
@@ -173,16 +182,8 @@ btn.onclick = func;
 btn.onclick = func2;
 ```
 
-<!-- prettier-ignore -->
-```html
-<!-- unrelated attributes and stuff are omitted for brevity -->
-<svg>
-  <image xlink:href="data:image/png;base64,iVBORw0KG..." /> <!-- 👈 base64 image goes here -->
-</svg>
-```
-
-- Also, learned how to make an XMLHttpRequest(xhr). This was what used to make requests before the Fetch API.
-- I mostly wrote my `font-size` values in `px` unit on the root and in `rem` everywhere else. Because, that way I can change font sizes relatively throughout the site pretty easily by only changing the root font-size. But, turned out, It will affect accessibility badly. Because, when a user sets a larger/smaller font on their browser, it won't take effect since the font size is set using `px` on the root. So, I used `rem` unit on the root instead. So that it will be relative to the user's preferred font size. Big thanks _ and _ for helping me out on it.
+- Also, learned how to make an XMLHttpRequest(xhr). This was what used to make requests in js before the Fetch API.
+- I mostly wrote my `font-size` values in `px` unit on the root and in `rem` everywhere else. Because, that way I can change font sizes relatively throughout the site pretty easily by only changing the root font-size. But, turned out, It will affect accessibility badly. Because, when a user sets a larger/smaller font on their browser, it won't take effect since the font size is set using `px`, it will overwrite it. So, I used `rem` unit on the root instead. So that it will always be relative to the user's preferred font size. Big thanks _ and _ for helping me out on it.
 - Learned how to get a recommended vscode extension notification using the .vscode/extensions.json file.
   By adding an extension's identifier as the value of `recommendations` in the extensions.json file in the .vscode directory. For example: vscode .env syntax highlighter extension's identifier is "irongeek.vscode-env". To show that as a recommended extension, add
 
@@ -202,7 +203,7 @@ btn.onclick = func2;
     <summary>Get the identifier of a vscode extension</summary>
   </details>
 
-- I learned some new git commands as well:
+- I learned a few new git commands as well:
   - `git add -p` : It can be used to stage only the desired changes to git. i.e. it'll make it possible to stage/add chunks/hunks of changes rather than all the changes.
   - `git reflog` - Kinda like `git log`, but gives more info. It can be used to undo even a hard reset.
   - `git merge --abort` - To abort a merge and go back. Useful when there are a lot of merge conflicts and you simply wanna go back to the previous state.
@@ -288,3 +289,5 @@ Also, I'll be learning NuxtJS little by little.
 - Frontend Mentor - [@farispalayi](https://www.frontendmentor.io/profile/farispalayi)
 - Twitter - [@farispalayi](https://www.twitter.com/farispalayi)
 - LinkedIn - [@farispalayi](https://www.linkedin.com/in/farispalayi)
+
+PS: I'm aware of the fact that there are a lot of grammar mistakes in this document. I'm learning English as well, so I believe it's natural to make mistakes. Though, I do hope that things I wrote here are all understandable. If you wanna point out to me any mistakes on this document (technical, grammar, anything) please feel free to do so.
