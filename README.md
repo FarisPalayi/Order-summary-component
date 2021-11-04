@@ -290,4 +290,4 @@ Also, I'll be learning NuxtJS little by little.
 - Twitter - [@farispalayi](https://www.twitter.com/farispalayi)
 - LinkedIn - [@farispalayi](https://www.linkedin.com/in/farispalayi)
 
-PS: I'm aware of the fact that there are a bunch of grammar mistakes in this document. I'm learning English as well, so I believe it's natural to make mistakes. Though, I do hope that things I wrote here are all understandable. If you wanna point out to me any mistakes on this document (technical, grammar, anything) please feel free to do so.
+PS: I'm aware of the fact that there are a bunch of grammar mistakes in this document. I'm learning English as well, so it's natural. Though, I do hope that things I wrote here are all understandable. If you wanna point out to me any mistakes on this document (technical, grammar, anything) please feel free to do so.
