@@ -269,20 +269,19 @@ steps:
 
 ### Continued development
 
-This project will be my last project where I focus on making the site cross-compatible with Internet Explorer Browser. Coding for IE is a nightmare and fortunately (and finally), Microsoft has officially declared its retirement. IE is no longer available in the newest Windows 11 as well.
+This project will be my last project where I focus on making the site cross-compatible with the Internet Explorer Browser. Coding for IE is a nightmare and fortunately (and finally), Microsoft has officially declared its retirement. IE is no longer available in the newest Windows 11 as well.
 
 Being that said, **my next focus will be on learning web architectures and best practices**; especially in Js and CSS - or frontend code. Because, I still have no idea how to structure the code and how to architect its parts and how to effectively communicate from one part to another. Currently, I make those decisions solely based on my preferences and gut feelings.
 
-So, currently, I'm currently looking for resources to learn that. If you happen to know any good ones, I'd greatful if you can share that with me.
+So, I'm currently looking for resources to learn that. If you happen to know any good ones, I'd be greatful if you can share that with me.
 
 Also, I'll be learning NuxtJS little by little.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [The “Blur Up” Technique for Loading Background Images - CSS Tricks](https://css-tricks.com/the-blur-up-technique-for-loading-background-images)
+- [How to Recreate the Ripple Effect of Material Design Buttons](https://css-tricks.com/how-to-recreate-the-ripple-effect-of-material-design-buttons)
+- [caniuse](https://caniuse.com) - Useful tool for quickly visualizing which frontend technologies are compatible with which browsers.
 
 ## Author
 
@@ -290,4 +289,4 @@ Also, I'll be learning NuxtJS little by little.
 - Twitter - [@farispalayi](https://www.twitter.com/farispalayi)
 - LinkedIn - [@farispalayi](https://www.linkedin.com/in/farispalayi)
 
-PS: I'm aware of the fact that there are a bunch of grammar mistakes in this document. I'm learning English as well, so it's natural. Though, I do hope that things I wrote here are all understandable. If you wanna point out to me any mistakes on this document (technical, grammar, anything) please feel free to do so.
+PS: I'm aware of the fact that there are a bunch of grammar mistakes in this document. I'm learning English as well, so it's natural. Though, I do hope that things I wrote here are all understandable. If you wanna point out to me any mistakes in this document (technical, grammar, anything) please feel free to do so.
