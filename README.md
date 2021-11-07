@@ -229,7 +229,7 @@ I followed this [article]() from CSS-Tricks to create the effect. Though, I have
 steps:
 
 1. Take the image and create a smaller version of that. It should be around 40 pixels height and width (but keep the aspect-ratio).
-2. Convert it to base64.
+2. Convert it to base64. (I used [this site](https://base64.guru/converter/encode/image/svg) for that).
 3. Put that into a Gausean Blur applied svg's image tag.
 
 ```html
@@ -261,9 +261,9 @@ steps:
 </svg>
 ```
 
-1. Now, convert that svg to base64
+1. Now, convert that svg to base64.
 2. show that as the image until the actual image is loaded.
-3. Show the actual image when it's loaded using javascript
+3. Show the actual image when it's loaded using javascript.
   <summary>Blur up loading</summary>
 </details>
 
