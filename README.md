@@ -121,6 +121,7 @@ feel free to make a pull request or issue.
 ### Site Architecture
 
 - I split my files into two folders, frontend and backend. Mainly because I wanted to deploy the frontend on Netlify and backend on Heroku.
+- I used this [buildpack](https://github.com/timanovsky/subdir-heroku-buildpack) for automated heroku deployment from the subfolder "/server". This buildpack makes it possible to set a subdirectory as the project root by specifying it in an environment variable (config vars in Heroku).
 - I used a simple format/method when writing commit messages. By prefixing certain keywords like **chore**, **build**, and **feat** to commit messages, I made sure that the commit messages are more organized and readable. (I got this method from the VueJs github repository)
 
   - chore: if it is a small task/change
