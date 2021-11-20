@@ -121,7 +121,8 @@ feel free to make a pull request or issue.
 ### Site Architecture
 
 - I split my files into two folders, frontend and backend. Mainly because I wanted to deploy the frontend on Netlify and backend on Heroku.
-- I used a simple format/method when writing commit messages. By prefixing certain keywords like **chore**, **build**, and **feat** to commit messages, I made sure the commit messages are more organized and readable. (I got this method from the VueJs github repository)
+- I used this [buildpack](https://github.com/timanovsky/subdir-heroku-buildpack) for automated heroku deployment from the subfolder "/server". This buildpack makes it possible to set a subdirectory as the project root by specifying it in an environment variable (config vars in Heroku).
+- I used a simple format/method when writing commit messages. By prefixing certain keywords like **chore**, **build**, and **feat** to commit messages, I made sure that the commit messages are more organized and readable. (I got this method from the VueJs github repository)
 
   - chore: if it is a small task/change
   - feat: when added new feature
@@ -157,7 +158,7 @@ I learned **_a lot of stuff_** while doing this project.
     - `let` and `const` (IE10 and below)
     - `addEventListener()` (IE8 and below)
     - Array methods like `forEach()`, `reduce()`, `map()` (IE8 and below)
-    - event.key (use event.keyCode instead)
+    - `event.key` (use `event.keyCode` instead)
 
 - Got to know a **built-in Sass function `math.is-unitless()`**. Which checks if the passed argument has a unit or not, and returns a boolean based on that. I used it in the `toRem()` function to avoid accidentally passing values that has units.
 - Learned how to use a base64 encoded image in an SVG.
@@ -170,7 +171,7 @@ I learned **_a lot of stuff_** while doing this project.
 </svg>
 ```
 
-- I didn't really know that there was a difference between `.addEventListener()` and `.onclick`, which is, while **`.addEventListener()` can be used as many s as we want, the `.onclick` can only be used once.** Which makes sense when thinking about it, because when using `.onclick`, we are just directly changing a method. So:
+- I didn't really know that there was a difference between `.addEventListener()` and `.onclick`, which is, while **`.addEventListener()` can be used as many times as we want, the `.onclick` can only be used once.** Which makes sense when thinking about it, because when using `.onclick`, we are just directly changing a method. So:
 
 ```js
 // while here the func and func2 is called
@@ -183,7 +184,7 @@ btn.onclick = func2;
 ```
 
 - Also, learned how to make an XMLHttpRequest(xhr). This was what used to make requests in js before the Fetch API.
-- I mostly wrote my `font-size` values in `px` unit on the root and in `rem` everywhere else. Because, that way I can change font sizes relatively throughout the site pretty easily by only changing the root font-size. But, turned out, It will affect accessibility badly. Because, when a user sets a larger/smaller font on their browser, it won't take effect since the font size is set using `px`, it will overwrite it. So, I used `rem` unit on the root instead. So that it will always be relative to the user's preferred font size. Big thanks _ and _ for helping me out on it.
+- I mostly set my `font-size` values in `px` unit on the root and in `rem` everywhere else. Because, that way I can change font sizes relatively throughout the site pretty easily by only changing the root font-size. But, turned out, It will affect accessibility badly. Because, when a user sets a larger/smaller font on their browser, it won't take effect since the font size is set using `px`, it will overwrite it. So, I used `rem` unit on the root instead. So that it will always be relative to the user's preferred font size. Big thanks _ and _ for helping me out on it.
 - Learned how to get a recommended vscode extension notification using the .vscode/extensions.json file.
   By adding an extension's identifier as the value of `recommendations` in the extensions.json file in the .vscode directory. For example: vscode .env syntax highlighter extension's identifier is "irongeek.vscode-env". To show that as a recommended extension, add
 
@@ -282,6 +283,7 @@ Also, I'll be learning NuxtJS little by little.
 - [The “Blur Up” Technique for Loading Background Images - CSS Tricks](https://css-tricks.com/the-blur-up-technique-for-loading-background-images)
 - [How to Recreate the Ripple Effect of Material Design Buttons](https://css-tricks.com/how-to-recreate-the-ripple-effect-of-material-design-buttons)
 - [caniuse](https://caniuse.com) - Useful tool for quickly visualizing which frontend technologies are compatible with which browsers.
+- [Automated heroku deploy from subfolder - Stack Overflow](https://stackoverflow.com/questions/39197334/automated-heroku-deploy-from-subfolder)
 
 ## Author
 
