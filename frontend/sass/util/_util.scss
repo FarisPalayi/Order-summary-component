@@ -15,3 +15,8 @@
   width: 1px !important;
   white-space: nowrap !important; /* 3 */
 }
+
+.btn-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

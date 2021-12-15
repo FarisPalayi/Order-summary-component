@@ -9,6 +9,14 @@ var doc = document,
     return doc.querySelectorAll(selector);
   };
 
+function disableBtn(btn, disable = true) {
+  btn.disabled = disable;
+  console.log(btn.classList);
+  !disable
+    ? btn.classList.add("btn-disabled")
+    : btn.classList.remove("btn-disabled");
+}
+
 // --------- Hero Image stuff-------------
 
 var imgSource = "../images/illustration-hero.svg";
@@ -181,13 +189,13 @@ function runBtnSpinner(btnElm, show) {
   var btnSpinnerContainer = btnElm.querySelector(".js-spinner-container");
 
   if (show === true) {
-    btnElm.disabled = true;
+    disableBtn(btnElm);
     btnSpinnerContainer.style.display = "inline";
     btnText.style.display = "none";
   }
 
   if (show === false) {
-    btnElm.disabled = false;
+    disableBtn(btnElm, false);
     btnSpinnerContainer.style.display = "none";
     btnText.style.display = "block";
   }
@@ -275,7 +283,7 @@ win.onload = function () {
 
   for (var i = 0; i < btns.length; i++) {
     var btn = btns[i];
-    btn.disabled = false;
+    disableBtn(btn, false);
   }
 };
 
@@ -306,7 +314,7 @@ if (form && paymentBtn) {
 
     makePayment(baseUrl + route, planId, function (errMsg) {
       runBtnSpinner(paymentBtn, false);
-      paymentBtn.disabled = false;
+      disableBtn(paymentBtn, false);
       errMsg ? showErrorBanner(errMsg) : showErrorBanner();
     });
   };

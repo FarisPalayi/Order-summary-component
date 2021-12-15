@@ -77,7 +77,7 @@ $plan-change-btn-width: toRem(53);
   color: $bright-blue;
   text-decoration: underline;
 
-  &:hover {
+  &:not(.btn-disabled):hover {
     color: lighten($bright-blue, 10);
   }
 }

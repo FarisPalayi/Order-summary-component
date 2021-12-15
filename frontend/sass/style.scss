@@ -73,7 +73,7 @@
   box-shadow: 0px 15px 20px transparentize($bright-blue, 0.75);
   transition: background-color 250ms;
 
-  &:hover {
+  &:not(.btn-disabled):hover {
     background-color: lighten($bright-blue, 10);
   }
 }
@@ -109,7 +109,7 @@
   color: $desaturated-blue;
   transition: color 250ms, box-shadow 250ms;
 
-  &:hover {
+  &:not(.btn-disabled):hover {
     color: $dark-blue;
   }
 }
