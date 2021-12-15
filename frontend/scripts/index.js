@@ -346,7 +346,7 @@ for (var j = 0; j < radioElms.length; j++) {
   };
 
   radioElm.onkeydown = function (e) {
-    if (e.key === "Tab") toggleDropdown(); //! add keyCode
+    if (e.key === "Tab" || e.keyCode === 9) toggleDropdown();
   };
 }
 
