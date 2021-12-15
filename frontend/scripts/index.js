@@ -52,7 +52,7 @@ function createRipple(event) {
 
 // to use as fallback if fetch API is not supported
 function postWithXhr(url, body, timeoutInS, callback, errCallback) {
-  // `var` is function scoped, not block scoped
+  // note: `var` is function scoped, not block scoped
   if (win.XMLHttpRequest) var xhr = new XMLHttpRequest();
   else var xhr = new ActiveXObject("Microsoft.XMLHTTP"); // legacy
 
