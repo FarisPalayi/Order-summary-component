@@ -261,6 +261,11 @@ function giveRadioFocus(radioElm) {
   radioElm.focus();
 }
 
+function giveFocusToSelectedRadio(radioElms) {
+  radioElms.forEach((radioElm) => {
+    if (radioElm.checked) giveRadioFocus(radioElm);
+  });
+}
 // --------- Event listeners ---------
 
 var btns = queryAll("button");
@@ -310,6 +315,7 @@ if (form && paymentBtn) {
 var changePlanBtn = query(".js-change-plan-btn");
 var planDropdown = query(".js-plan-dropdown");
 var planOverlay = query(".js-plan-dropdown-overlay");
+var radioDropdownLists = queryAll(".js-plan-radio");
 
 function toggleDropdown() {
   toggleDropdownVisibility(changePlanBtn, planDropdown, planOverlay);
@@ -317,10 +323,7 @@ function toggleDropdown() {
 
 changePlanBtn.onclick = function () {
   toggleDropdown();
-
-  queryAll(".js-plan-radio").forEach((elm) => {
-    if (elm.checked) giveRadioFocus(elm);
-  });
+  giveFocusToSelectedRadio(radioDropdownLists);
 };
 
 var radioElms = queryAll(".js-plan-radio");

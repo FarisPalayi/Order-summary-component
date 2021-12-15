@@ -1,4 +1,5 @@
 @use "../abstracts/colors" as *;
+@use "../abstracts//functions" as *;
 
 .plan__dropdown-overlay {
   display: none; //js
@@ -15,7 +16,7 @@
   position: absolute;
   margin-top: 2px;
   left: 50%;
-  transform: translatex(-50%);
+  transform: translateX(-50%);
   background-color: #d2e0fb;
   list-style: none;
   border-radius: 5px;
@@ -23,6 +24,7 @@
   z-index: 1;
   overflow: hidden;
   font-size: toRem(14);
+  box-shadow: 0.3px 0.5px 0.7px rgb(210, 224, 251, 0.35);
 }
 
 .plan__item {
