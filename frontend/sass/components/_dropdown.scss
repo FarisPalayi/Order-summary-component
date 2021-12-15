@@ -17,21 +17,22 @@
   margin-top: 2px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #d2e0fb;
+  background-color: #e0ebff;
   list-style: none;
   border-radius: 5px;
   color: $desaturated-blue;
   z-index: 1;
   overflow: hidden;
   font-size: toRem(14);
-  box-shadow: 0.3px 0.5px 0.7px rgb(210, 224, 251, 0.35);
+  box-shadow: 0px 3px 10px rgb(0, 0, 0, 10%);
 }
 
 .plan__item {
   min-width: max-content;
+  transition: background-color 0.3s;
 
   &:hover {
-    background-color: lighten(#8ab3ff, 12);
+    background-color: lighten(#8ab3ff, 13.5);
   }
 }
 
@@ -44,7 +45,7 @@
   }
 
   &:checked + .plan__name {
-    background-color: #8ab3ff;
+    background-color: #81a7ef;
     color: white;
   }
 }
