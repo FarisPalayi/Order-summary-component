@@ -317,7 +317,10 @@ function toggleDropdown() {
 
 changePlanBtn.onclick = function () {
   toggleDropdown();
-  giveRadioFocus(query(".js-plan-radio"));
+
+  queryAll(".js-plan-radio").forEach((elm) => {
+    if (elm.checked) giveRadioFocus(elm);
+  });
 };
 
 var radioElms = queryAll(".js-plan-radio");
