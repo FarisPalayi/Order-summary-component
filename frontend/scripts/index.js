@@ -11,7 +11,6 @@ var doc = document,
 
 function disableBtn(btn, disable = true) {
   btn.disabled = disable;
-  console.log(btn.classList);
   disable
     ? btn.classList.add("btn-disabled")
     : btn.classList.remove("btn-disabled");
