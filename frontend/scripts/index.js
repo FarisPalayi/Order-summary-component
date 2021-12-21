@@ -222,11 +222,14 @@ function showErrorBanner(bannerMsg) {
 var initialPlanId = 3;
 var planId = initialPlanId;
 
+// I know I shoulda fetch this 👇. But, I didn't wanna configure fetch and xhr functions in order do that.
+// Also, since the subscription plan details data here and on the server is stale, It's kinda unnecessary.
+
 var planDetailsData = [
   { id: 1, name: "Weekly", price: 99, timeFrame: "week" },
   { id: 2, name: "Monthly", price: 399, timeFrame: "month" },
   { id: 3, name: "Annual", price: 3999, timeFrame: "year" },
-]; // I know I shoulda fetch this. But, I didn't wanna configure fetch and xhr functions in order do that.
+];
 
 function toggleDropdownVisibility(controlElm, dropdownElm, overlay) {
   dropdownElm.classList.toggle("hide");
