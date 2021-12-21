@@ -176,6 +176,7 @@ function makePayment(url, planId, errCallback) {
     function (data) {
       redirectToResponseUrl(data);
       stopBtnSpinner();
+      disablePriceSelectionDropdown(changePlanBtn, false);
     },
     errCallback
   );
@@ -272,10 +273,15 @@ function giveRadioFocus(radioElm) {
 }
 
 function giveFocusToSelectedRadio(radioElms) {
-  radioElms.forEach((radioElm) => {
+  radioElms.forEach(function (radioElm) {
     if (radioElm.checked) giveRadioFocus(radioElm);
   });
 }
+
+function disablePriceSelectionDropdown(dropdownElm, disable = true) {
+  disableBtn(dropdownElm, disable);
+}
+
 // --------- Event listeners ---------
 
 var btns = queryAll("button");
@@ -309,6 +315,7 @@ if (form && paymentBtn) {
   form.onsubmit = function (e) {
     e.preventDefault();
     runBtnSpinner(paymentBtn, true);
+    disablePriceSelectionDropdown(changePlanBtn, true);
 
     var baseUrl = "https://order-summary-page.herokuapp.com";
     // var baseUrl = "http://localhost:3000"; // dev-local

@@ -65,6 +65,7 @@ button {
   font-weight: bold;
   user-select: none;
   cursor: pointer;
+  transition: all 0.3s;
 
   &:focus,
   &:focus-visible {
