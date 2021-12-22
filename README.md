@@ -15,6 +15,12 @@ This is a solution to the [Order summary card challenge on Frontend Mentor](http
     - [Supported Browsers 🌐](#supported-browsers-)
     - [Project File Structure 🏗](#project-file-structure-)
     - [Links 🔗](#links-)
+    - [Project setup](#project-setup)
+      - [Clone the repository locally](#clone-the-repository-locally)
+      - [Move to the desired directory](#move-to-the-desired-directory)
+      - [Install dependencies](#install-dependencies)
+      - [frontend/ directory local setup](#frontend-directory-local-setup)
+      - [server/ directory local setup](#server-directory-local-setup)
   - [My process](#my-process)
     - [Built with 🛠](#built-with-)
       - [Deployed on:](#deployed-on)
@@ -36,11 +42,11 @@ This is a solution to the [Order summary card challenge on Frontend Mentor](http
 
 ### Screenshot 📸
 
-- On 1440px width 900px height (desktop)
+- On desktop (1440px width & 900px height)
 
 ![site screenshot on desktop](./frontend/images/screenshot/desktop.png)
 
-- On 375px width 709px height (mobile)
+- On mobile (375px width & 709px height)
 
 ![site screenshot on mobile](./frontend/images/screenshot/mobile.png)
 
@@ -97,6 +103,50 @@ feel free to make a pull request or issue.
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+
+### Project setup
+
+#### Clone the repository locally
+
+```
+  git clone https://github.com/FarisPalayi/Order-summary-component.git
+```
+
+#### Move to the desired directory
+
+```js
+  cd frontend/
+  //  or
+  cd server/
+```
+
+#### Install dependencies
+
+```
+  npm install
+```
+
+#### frontend/ directory local setup
+
+- ##### Compiles and hot-reloads for development
+  ```
+    npm run dev
+  ```
+- ##### Compiles and minifies for production
+  ```
+    npm run build
+  ```
+
+#### server/ directory local setup
+
+- ##### Run the server locally and auto server restart on save
+  ```
+    npm run start:live
+  ```
+- ##### Compiles the server code for production
+  ```
+    npm run build
+  ```
 
 ## My process
 
@@ -184,7 +234,7 @@ btn.onclick = func2;
 ```
 
 - Also, learned how to make an XMLHttpRequest(xhr). This was what used to make requests in js before the Fetch API.
-- I mostly set my `font-size` values in `px` unit on the root and in `rem` everywhere else. Because, that way I can change font sizes relatively throughout the site pretty easily by only changing the root font-size. But, turned out, It will affect accessibility badly. Because, when a user sets a larger/smaller font on their browser, it won't take effect since the font size is set using `px`, it will overwrite it. So, I used `rem` unit on the root instead. So that it will always be relative to the user's preferred font size. Big thanks _ and _ for helping me out on it.
+- Usually I set my root `font-size` value in `px`, and use `rem` for `font-size` everywhere else. Because, that way I can change the font sizes relatively throughout the site pretty easily by only changing the root font-size. But, turned out, It will affect accessibility badly. Because, when a user sets a larger/smaller font on their browser, it won't take effect since the font size is set using `px`, it will overwrite it. So, I used `rem` unit on the root instead. So that it will always be relative to the user's preferred font size. Big thanks _ and _ for helping me out on it.
 - Learned how to get a recommended vscode extension notification using the .vscode/extensions.json file.
   By adding an extension's identifier as the value of `recommendations` in the extensions.json file in the .vscode directory. For example: vscode .env syntax highlighter extension's identifier is "irongeek.vscode-env". To show that as a recommended extension, add
 
@@ -225,7 +275,7 @@ Popular apps like whatsapp, facebook, and sites like medium uses the blur-up tec
 <br />
 <br />
 
-I followed this [article]() from CSS-Tricks to create the effect. Though, I have done a few things slightly differently.
+I followed this [article](https://css-tricks.com/the-blur-up-technique-for-loading-background-images) from CSS-Tricks to create the effect. Though, I have done a few things slightly differently.
 
 steps:
 
@@ -274,7 +324,7 @@ This project will be my last project where I focus on making the site cross-comp
 
 Being that said, **my next focus will be on learning web architectures and best practices**; especially in Js and CSS - or frontend code. Because, I still have no idea how to structure the code and how to architect its parts and how to effectively communicate from one part to another. Currently, I make those decisions solely based on my preferences and gut feelings.
 
-So, I'm currently looking for resources to learn that. If you happen to know any good ones, I'd be greatful if you can share that with me.
+So, I'm currently looking for resources to learn that. If you happen to know any good ones, I'd be grateful if you can point me to the right direction.
 
 Also, I'll be learning NuxtJS little by little.
 
