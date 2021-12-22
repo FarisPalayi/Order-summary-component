@@ -278,8 +278,8 @@ function giveFocusToSelectedRadio(radioElms) {
   });
 }
 
-function disablePriceSelectionDropdown(dropdownElm, disable = true) {
-  disableBtn(dropdownElm, disable);
+function disablePriceSelectionDropdown(dropdownCtrlElm, disable = true) {
+  disableBtn(dropdownCtrlElm, disable);
 }
 
 // --------- Event listeners ---------
@@ -302,6 +302,7 @@ heroImg.onload = function () {
 };
 
 var paymentBtn = query(".js-payment-btn");
+var changePlanBtn = query(".js-change-plan-btn");
 
 if (paymentBtn) {
   paymentBtn.onclick = function (e) {
@@ -324,12 +325,12 @@ if (form && paymentBtn) {
     makePayment(baseUrl + route, planId, function (errMsg) {
       runBtnSpinner(paymentBtn, false);
       disableBtn(paymentBtn, false);
+      disablePriceSelectionDropdown(changePlanBtn, false);
       errMsg ? showErrorBanner(errMsg) : showErrorBanner();
     });
   };
 }
 
-var changePlanBtn = query(".js-change-plan-btn");
 var planDropdown = query(".js-plan-dropdown");
 var planOverlay = query(".js-plan-dropdown-overlay");
 var radioDropdownLists = queryAll(".js-plan-radio");
