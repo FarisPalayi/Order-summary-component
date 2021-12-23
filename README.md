@@ -205,6 +205,7 @@ I learned **_a lot of stuff_** while doing this project.
     - Destructuring
     - Spread, rest syntax
     - Template literals
+    - Default function parameter
     - `let` and `const` (IE10 and below)
     - `addEventListener()` (IE8 and below)
     - Array methods like `forEach()`, `reduce()`, `map()` (IE8 and below)
