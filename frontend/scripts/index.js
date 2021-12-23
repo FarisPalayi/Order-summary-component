@@ -9,8 +9,10 @@ var doc = document,
     return doc.querySelectorAll(selector);
   };
 
-function disableBtn(btn, disable = true) {
+function disableBtn(btn, disable) {
+  if (disable == null) disable = true;
   btn.disabled = disable;
+
   disable
     ? btn.classList.add("btn-disabled")
     : btn.classList.remove("btn-disabled");
@@ -273,12 +275,14 @@ function giveRadioFocus(radioElm) {
 }
 
 function giveFocusToSelectedRadio(radioElms) {
-  radioElms.forEach(function (radioElm) {
+  for (let i = 0; i < radioElms.length; i++) {
+    const radioElm = radioElms[i];
     if (radioElm.checked) giveRadioFocus(radioElm);
-  });
+  }
 }
 
-function disablePriceSelectionDropdown(dropdownCtrlElm, disable = true) {
+function disablePriceSelectionDropdown(dropdownCtrlElm, disable) {
+  if (disable == null) disable = true;
   disableBtn(dropdownCtrlElm, disable);
 }
 
