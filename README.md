@@ -179,6 +179,8 @@ feel free to make a pull request or issue.
   - build: build, deployment related changes
   - refactor: when rewriting or making changes to existing code(refactoring)
 
+- Elements that will be used in javascript will have a `js-` prefixed class.
+
 ### What I learned
 
 I learned **_a lot of stuff_** while doing this project.
@@ -261,9 +263,6 @@ btn.onclick = func2;
   - `git bisect` - To find the commit that is responsible for a bug. Finding this is possible to do in git has helped me a lot in this project. Especially when something unexpectedly broke in IE.
   - `git merge --abort` - To abort a merge and go back. Useful when there are a lot of merge conflicts and you simply wanna go back to the previous state.
   - `git reset --merge` - to reset a merge. Like resetting(going back to) a commit, but for merges.
-- Furthermore, I implemented a bunch of best practices that I've heard before like,
-  - Don't show a button that does not work (UX) <!--! add more if there's any -->
-  - Don't use CSS style related classes in javascript or in testing. Use a prefixed class or other attributes, for eg: `data` attributes. (I used a `js-` prefix in this project)
 
 ### How it's done
 
@@ -334,6 +333,8 @@ Also, I'll be learning NuxtJS little by little.
 
 - [The “Blur Up” Technique for Loading Background Images - CSS Tricks](https://css-tricks.com/the-blur-up-technique-for-loading-background-images)
 - [How to Recreate the Ripple Effect of Material Design Buttons](https://css-tricks.com/how-to-recreate-the-ripple-effect-of-material-design-buttons)
+- [Disabled Buttons in User Interface](https://uxplanet.org/disabled-buttons-in-user-interface-4dafda3e6fe7)
+- [Is it ok to ‘grey out’ disabled buttons?](https://medium.com/@h_locke/is-it-ok-to-grey-out-disabled-buttons-8afa74a0fae)
 - [caniuse](https://caniuse.com) - Useful tool for quickly visualizing which frontend technologies are compatible with which browsers.
 - [Automated heroku deploy from subfolder - Stack Overflow](https://stackoverflow.com/questions/39197334/automated-heroku-deploy-from-subfolder)
 
