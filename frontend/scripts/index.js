@@ -179,6 +179,7 @@ function makePayment(url, planId, errCallback) {
       redirectToResponseUrl(data);
       stopBtnSpinner();
       disablePriceSelectionDropdown(changePlanBtn, false);
+      showErrorBanner("", null, true); // reset
     },
     errCallback
   );
@@ -205,18 +206,34 @@ function runBtnSpinner(btnElm, show) {
 
 // --------- Error banner stuff ---------
 
-function showErrorBanner(bannerMsg) {
+function showBanner(bannerElm, bannerMsg, showClass) {
+  bannerElm.innerText = bannerMsg;
+  bannerElm.classList.add(showClass);
+}
+
+function hideBanner(bannerElm, showClass) {
+  bannerElm.classList.remove(showClass);
+}
+
+//! find a better name for this function
+function showErrorBanner(bannerMsg, showClass, isSrOnly) {
   if (typeof bannerMsg !== "string")
     bannerMsg = "Something went wrong! Please try again.";
+  if (typeof showClass !== "string") showClass = "fade-scale";
+  if (typeof isSrOnly !== "boolean") isSrOnly = false;
 
   var errorBanner = query(".js-error-banner");
   var bannerShowDuration = 2500;
 
-  errorBanner.innerText = bannerMsg;
-  errorBanner.classList.add("fade-scale");
+  if (isSrOnly) {
+    hideBanner(errorBanner, showClass);
+    return (errorBanner.innerText = bannerMsg);
+  }
+
+  showBanner(errorBanner, bannerMsg, showClass);
 
   setTimeout(function () {
-    errorBanner.classList.remove("fade-scale");
+    hideBanner(errorBanner, showClass);
   }, bannerShowDuration);
 }
 
@@ -321,6 +338,11 @@ if (form && paymentBtn) {
     e.preventDefault();
     runBtnSpinner(paymentBtn, true);
     disablePriceSelectionDropdown(changePlanBtn, true);
+    showErrorBanner(
+      "Redirecting to payment page. Don't refresh the page",
+      null,
+      true
+    );
 
     var baseUrl = "https://order-summary-page.herokuapp.com";
     // var baseUrl = "http://localhost:3000"; // dev-local
