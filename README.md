@@ -13,9 +13,9 @@ This is a solution to the [Order summary card challenge on Frontend Mentor](http
     - [Screenshot 📸](#screenshot-)
     - [Features ✨](#features-)
     - [Supported Browsers 🌐](#supported-browsers-)
-    - [Project File Structure 🏗](#project-file-structure-)
+    - [Project File Structure 📂](#project-file-structure-)
     - [Links 🔗](#links-)
-    - [Project setup](#project-setup)
+    - [Project setup 💻](#project-setup-)
       - [Clone the repository locally](#clone-the-repository-locally)
       - [Move to the desired directory](#move-to-the-desired-directory)
       - [Install dependencies](#install-dependencies)
@@ -24,13 +24,13 @@ This is a solution to the [Order summary card challenge on Frontend Mentor](http
   - [My process](#my-process)
     - [Built with 🛠](#built-with-)
       - [Deployed on:](#deployed-on)
-    - [Site Architecture](#site-architecture)
-    - [What I learned](#what-i-learned)
-    - [How it's done](#how-its-done)
-      - [Blur-up image loading](#blur-up-image-loading)
-    - [Continued development](#continued-development)
-    - [Useful resources](#useful-resources)
-  - [Author](#author)
+    - [Site Architecture 🏗](#site-architecture-)
+    - [What I learned 📖](#what-i-learned-)
+    - [How it's done 🤔](#how-its-done-)
+      - [Blur-up image loading 🖼️](#blur-up-image-loading-️)
+    - [Continued development 🌊](#continued-development-)
+    - [Useful resources 🔗](#useful-resources-)
+  - [Author 🤓](#author-)
 
 ## Overview
 
@@ -59,6 +59,9 @@ This is a solution to the [Order summary card challenge on Frontend Mentor](http
 - Fluidly responsive
 - Conventional loading spinner on button
 - Error snackbar on request failure
+- Change subscription plan dropdown
+- disable buttons until javascript is loaded
+- Fully keyboard accessible
 
 ### Supported Browsers 🌐
 
@@ -73,7 +76,7 @@ This is a solution to the [Order summary card challenge on Frontend Mentor](http
 **If you are a mac user**, I'd appreciate it if you could check it on Safari and let me know if it works on it or not.
 feel free to make a pull request or issue.
 
-### Project File Structure 🏗
+### Project File Structure 📂
 
 ```
 .
@@ -104,7 +107,7 @@ feel free to make a pull request or issue.
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-### Project setup
+### Project setup 💻
 
 #### Clone the repository locally
 
@@ -116,7 +119,11 @@ feel free to make a pull request or issue.
 
 ```js
   cd frontend/
-  //  or
+```
+
+or
+
+```js
   cd server/
 ```
 
@@ -168,7 +175,7 @@ feel free to make a pull request or issue.
 - Netlify
 - Heroku
 
-### Site Architecture
+### Site Architecture 🏗
 
 - I split my files into two folders, frontend and backend. Mainly because I wanted to deploy the frontend on Netlify and backend on Heroku.
 - I used this [buildpack](https://github.com/timanovsky/subdir-heroku-buildpack) for automated heroku deployment from the subfolder "/server". This buildpack makes it possible to set a subdirectory as the project root by specifying it in an environment variable (config vars in Heroku).
@@ -181,7 +188,7 @@ feel free to make a pull request or issue.
 
 - Elements that will be used in javascript will have a `js-` prefixed class.
 
-### What I learned
+### What I learned 📖
 
 I learned **_a lot of stuff_** while doing this project.
 
@@ -264,11 +271,11 @@ btn.onclick = func2;
   - `git merge --abort` - To abort a merge and go back. Useful when there are a lot of merge conflicts and you simply wanna go back to the previous state.
   - `git reset --merge` - to reset a merge. Like resetting(going back to) a commit, but for merges.
 
-### How it's done
+### How it's done 🤔
 
 High level overview of how some features are implemented.
 
-#### Blur-up image loading
+#### Blur-up image loading 🖼️
 
 <details>
 Popular apps like whatsapp, facebook, and sites like medium uses the blur-up technique to load images on their site/app. Where, a blurred version of the image is shown until the image has loaded.
@@ -319,7 +326,7 @@ steps:
   <summary>Blur up loading</summary>
 </details>
 
-### Continued development
+### Continued development 🌊
 
 This project will be my last project where I focus on making the site cross-compatible with the Internet Explorer Browser. Coding for IE is a nightmare and fortunately (and finally), Microsoft has officially declared its retirement. IE is no longer available in the newest Windows 11 as well.
 
@@ -329,7 +336,7 @@ So, I'm currently looking for resources to learn that. If you happen to know any
 
 Also, I'll be learning NuxtJS little by little.
 
-### Useful resources
+### Useful resources 🔗
 
 - [The “Blur Up” Technique for Loading Background Images - CSS Tricks](https://css-tricks.com/the-blur-up-technique-for-loading-background-images)
 - [How to Recreate the Ripple Effect of Material Design Buttons](https://css-tricks.com/how-to-recreate-the-ripple-effect-of-material-design-buttons)
@@ -338,10 +345,10 @@ Also, I'll be learning NuxtJS little by little.
 - [caniuse](https://caniuse.com) - Useful tool for quickly visualizing which frontend technologies are compatible with which browsers.
 - [Automated heroku deploy from subfolder - Stack Overflow](https://stackoverflow.com/questions/39197334/automated-heroku-deploy-from-subfolder)
 
-## Author
+## Author 🤓
 
 - Frontend Mentor - [@farispalayi](https://www.frontendmentor.io/profile/farispalayi)
 - Twitter - [@farispalayi](https://www.twitter.com/farispalayi)
 - LinkedIn - [@farispalayi](https://www.linkedin.com/in/farispalayi)
 
-PS: I'm aware of the fact that there are a bunch of grammar mistakes in this document. I'm learning English as well, so it's normal. Though, I do hope that things I wrote here are all understandable. If you wanna point out to me any mistakes in this document (technical, grammar, anything) please feel free to do so.
+PS: I'm aware of the fact that there are a bunch of grammar mistakes in this document. I'm learning English as well, so I guess it's normal. Though, I do hope that things I wrote here are all understandable. If you wanna point out to me any mistakes in this document (technical, grammar, anything) please feel free to do so.
