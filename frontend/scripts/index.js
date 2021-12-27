@@ -78,7 +78,7 @@ function postWithXhr(url, body, timeoutInS, callback, errCallback) {
     ) {
       var data = JSON.parse(xhr.responseText);
       if (data) callback(data);
-    } else if (this.status !== serverRequestSuccess) {
+    } else if (this.status !== serverRequestSuccess && this.status !== 0) {
       console.error("Error: " + this.status, this.statusText);
       errCallback("Request failed! Please try again.");
     }
@@ -100,7 +100,7 @@ function postWithXhr(url, body, timeoutInS, callback, errCallback) {
     errCallback("Request timed out! Please try again.");
   };
 
-  xhr.onerror = function () {
+  xhr.onerror = function (error) {
     console.error("Error: " + this.status, this.statusText);
     errCallback("Request failed! Please try again.");
   };
@@ -286,8 +286,8 @@ function giveRadioFocus(radioElm) {
 }
 
 function giveFocusToSelectedRadio(radioElms) {
-  for (let i = 0; i < radioElms.length; i++) {
-    const radioElm = radioElms[i];
+  for (var i = 0; i < radioElms.length; i++) {
+    var radioElm = radioElms[i];
     if (radioElm.checked) giveRadioFocus(radioElm);
   }
 }
