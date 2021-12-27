@@ -70,7 +70,7 @@ This is a solution to the [Order summary card challenge on Frontend Mentor](http
 - IE11
 - IE10
 
-**If you are a mac user**, I'd appreciate it if you check it on safari and let me know if it works on it or not.
+**If you are a mac user**, I'd appreciate it if you could check it on Safari and let me know if it works on it or not.
 feel free to make a pull request or issue.
 
 ### Project File Structure 🏗
@@ -258,11 +258,12 @@ btn.onclick = func2;
 - I learned a few new git commands as well:
   - `git add -p` : It can be used to stage only the desired changes to git. i.e. it'll make it possible to stage/add chunks/hunks of changes rather than all the changes.
   - `git reflog` - Kinda like `git log`, but gives more info. It can be used to undo even a hard reset.
+  - `git bisect` - To find the commit that is responsible for a bug. Finding this is possible to do in git has helped me a lot in this project. Especially when something unexpectedly broke in IE.
   - `git merge --abort` - To abort a merge and go back. Useful when there are a lot of merge conflicts and you simply wanna go back to the previous state.
   - `git reset --merge` - to reset a merge. Like resetting(going back to) a commit, but for merges.
 - Furthermore, I implemented a bunch of best practices that I've heard before like,
-  - Don't show a user a button that does not work (UX) <!--! add more if there's any -->
-  - Don't use CSS style related classes to get an element in javascript or in testing. Use a prefixed class or other attributes, for eg: `data` attributes. (I used a `js-` prefix in this project)
+  - Don't show a button that does not work (UX) <!--! add more if there's any -->
+  - Don't use CSS style related classes in javascript or in testing. Use a prefixed class or other attributes, for eg: `data` attributes. (I used a `js-` prefix in this project)
 
 ### How it's done
 
