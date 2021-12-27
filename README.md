@@ -82,6 +82,7 @@ feel free to make a pull request or issue.
 .
 ├── .vscode/
 │   ├── extensions.json
+│   ├── settings.json
 ├── frontend/
 │   ├── design/
 │   └── images/
