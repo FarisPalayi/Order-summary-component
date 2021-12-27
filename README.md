@@ -15,12 +15,6 @@ This is a solution to the [Order summary card challenge on Frontend Mentor](http
     - [Supported Browsers 🌐](#supported-browsers-)
     - [Project File Structure 📂](#project-file-structure-)
     - [Links 🔗](#links-)
-    - [Project setup 💻](#project-setup-)
-      - [Clone the repository locally](#clone-the-repository-locally)
-      - [Move to the desired directory](#move-to-the-desired-directory)
-      - [Install dependencies](#install-dependencies)
-      - [frontend/ directory local setup](#frontend-directory-local-setup)
-      - [server/ directory local setup](#server-directory-local-setup)
   - [My process](#my-process)
     - [Built with 🛠](#built-with-)
       - [Deployed on:](#deployed-on)
@@ -30,6 +24,12 @@ This is a solution to the [Order summary card challenge on Frontend Mentor](http
       - [Blur-up image loading 🖼️](#blur-up-image-loading-️)
     - [Continued development 🌊](#continued-development-)
     - [Useful resources 🔗](#useful-resources-)
+  - [Project setup 💻](#project-setup-)
+    - [Clone the repository locally](#clone-the-repository-locally)
+    - [Move to the desired directory](#move-to-the-desired-directory)
+    - [Install dependencies](#install-dependencies)
+    - [frontend/ directory local setup](#frontend-directory-local-setup)
+    - [server/ directory local setup](#server-directory-local-setup)
   - [Author 🤓](#author-)
 
 ## Overview
@@ -107,54 +107,6 @@ feel free to make a pull request or issue.
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
-
-### Project setup 💻
-
-#### Clone the repository locally
-
-```
-  git clone https://github.com/FarisPalayi/Order-summary-component.git
-```
-
-#### Move to the desired directory
-
-```js
-  cd frontend/
-```
-
-or
-
-```js
-  cd server/
-```
-
-#### Install dependencies
-
-```
-  npm install
-```
-
-#### frontend/ directory local setup
-
-- ##### Compiles and hot-reloads for development
-  ```
-    npm run dev
-  ```
-- ##### Compiles and minifies for production
-  ```
-    npm run build
-  ```
-
-#### server/ directory local setup
-
-- ##### Run the server locally and auto server restart on save
-  ```
-    npm run start:live
-  ```
-- ##### Compiles the server code for production
-  ```
-    npm run build
-  ```
 
 ## My process
 
@@ -345,6 +297,55 @@ Also, I'll be learning NuxtJS little by little.
 - [Is it ok to ‘grey out’ disabled buttons?](https://medium.com/@h_locke/is-it-ok-to-grey-out-disabled-buttons-8afa74a0fae)
 - [caniuse](https://caniuse.com) - Useful tool for quickly visualizing which frontend technologies are compatible with which browsers.
 - [Automated heroku deploy from subfolder - Stack Overflow](https://stackoverflow.com/questions/39197334/automated-heroku-deploy-from-subfolder)
+
+
+## Project setup 💻
+
+### Clone the repository locally
+
+```
+  git clone https://github.com/FarisPalayi/Order-summary-component.git
+```
+
+### Move to the desired directory
+
+```js
+  cd frontend/
+```
+
+or
+
+```js
+  cd server/
+```
+
+### Install dependencies
+
+```
+  npm install
+```
+
+### frontend/ directory local setup
+
+- #### Compiles and hot-reloads for development
+  ```
+    npm run dev
+  ```
+- #### Compiles and minifies for production
+  ```
+    npm run build
+  ```
+
+### server/ directory local setup
+
+- #### Run the server locally and auto server restart on save
+  ```
+    npm run start:live
+  ```
+- #### Compiles the server code for production
+  ```
+    npm run build
+  ```
 
 ## Author 🤓
 
