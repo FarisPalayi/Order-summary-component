@@ -197,7 +197,7 @@ btn.onclick = func2;
 ```
 
 - Also, learned how to make an XMLHttpRequest(xhr). This was what used to make requests in js before the Fetch API.
-- Usually I set my root `font-size` value in `px`, and use `rem` for `font-size` everywhere else. Because, that way I can change the font sizes relatively throughout the site pretty easily by only changing the root font-size. But, turned out, It will affect accessibility badly. Because, when a user sets a larger/smaller font on their browser, it won't take effect since the font size is set using `px`, it will overwrite it. So, I used `rem` unit on the root instead. So that it will always be relative to the user's preferred font size. Big thanks _ and _ for helping me out on it.
+- Usually I set my root `font-size` value in `px`, and use `rem` for `font-size` everywhere else. Because, that way I can change the font sizes relatively throughout the site pretty easily by only changing the root font-size. But, turned out, It will affect accessibility badly. Because, when a user sets a larger/smaller font on their browser, it won't take effect since the font size is set using `px`, it will overwrite it. So, I used `rem` unit on the root instead. So that it will always be relative to the user's preferred font size. Big thanks to @grace-snow and @AlexKMarshall for helping me out on it.
 - Learned how to get a recommended vscode extension notification using the .vscode/extensions.json file.
   By adding an extension's identifier as the value of `recommendations` in the extensions.json file in the .vscode directory. For example: vscode .env syntax highlighter extension's identifier is "irongeek.vscode-env". To show that as a recommended extension, add
 
