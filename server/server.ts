@@ -8,7 +8,7 @@ import cors from "cors";
 //! delete localhost from allow origin on production
 app.use(
   cors({
-    origin: [`${process.env.CLIENT_URL}`, "http://localhost:8080"],
+    origin: [`${process.env.CLIENT_URL}`],
   })
 );
 
