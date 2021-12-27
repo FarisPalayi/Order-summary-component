@@ -264,23 +264,17 @@ function toggleDropdownVisibility(controlElm, dropdownElm, overlay) {
   overlay.style.display = "block";
 }
 
-function changePlanOnSelection(
-  controlElm,
-  planNameElm,
-  planPriceElm,
-  planTimeframeElm,
-  planDetailsArr
-) {
-  var radioLabel = controlElm.nextElementSibling;
+function changePlanOnSelection(changePlanObj) {
+  var radioLabel = changePlanObj.controlElm.nextElementSibling;
   var labelText = radioLabel.innerText;
 
-  for (var i = 0; i < planDetailsArr.length; i++) {
-    var planDetailsObj = planDetailsArr[i];
+  for (var i = 0; i < changePlanObj.planDetailsArr.length; i++) {
+    var planDetailsObj = changePlanObj.planDetailsArr[i];
 
     if (planDetailsObj.name === labelText) {
-      planNameElm.innerText = labelText + " Plan";
-      planPriceElm.innerText = "₹" + planDetailsObj.price;
-      planTimeframeElm.innerText = planDetailsObj.timeFrame;
+      changePlanObj.planNameElm.innerText = labelText + " Plan";
+      changePlanObj.planPriceElm.innerText = "₹" + planDetailsObj.price;
+      changePlanObj.planTimeframeElm.innerText = planDetailsObj.timeFrame;
 
       planId = planDetailsObj.id;
     }
@@ -379,13 +373,13 @@ for (var j = 0; j < radioElms.length; j++) {
   var radioElm = radioElms[j];
 
   radioElm.onchange = function () {
-    changePlanOnSelection(
-      this,
-      planTitle,
-      planPrice,
-      planTimeframe,
-      planDetailsData
-    );
+    changePlanOnSelection({
+      controlElm: this,
+      planNameElm: planTitle,
+      planPriceElm: planPrice,
+      planTimeframeElm: planTimeframe,
+      planDetailsArr: planDetailsData,
+    });
   };
 
   radioElm.onkeyup = function (e) {
