@@ -140,6 +140,8 @@ feel free to make a pull request or issue.
   - refactor: when rewriting or making changes to existing code(refactoring)
 
 - Elements that will be used in javascript will have a `js-` prefixed class.
+- I used snowpack as the build tool for the frontend/ directory.
+- Used ts-node to compile and run typescript code for development in the server/ directory.
 
 ### What I learned 📖
 
