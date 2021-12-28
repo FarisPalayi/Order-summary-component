@@ -24,6 +24,10 @@ $plan-change-btn-width: toRem(53);
   background-color: $very-pale-blue;
   border-radius: 13px;
 
+  @include smallMobile {
+    flex-direction: column;
+  }
+
   > * {
     float: left; // for IE
   }
@@ -47,9 +51,13 @@ $plan-change-btn-width: toRem(53);
     100% - var(--plan-icon-width) - var(--plan-change-btn-width) - (var(--plan-gap) * 2)
   );
 
-  @include variable(width, --plan-details-width, 165px);
+  @include variable(width, --plan-details-width, toRem(165));
   min-width: fit-content;
   text-align: left;
+
+  @include smallMobile {
+    text-align: center;
+  }
 }
 
 .plan__title,
