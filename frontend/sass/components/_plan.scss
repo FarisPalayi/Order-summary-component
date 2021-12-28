@@ -4,7 +4,7 @@
 
 $plan-gap: toRem(20);
 $plan-icon-width: toRem(48);
-$plan-change-btn-width: toRem(53);
+$plan-change-btn-width: toRem(53); // approx.
 
 .plan {
   --plan-gap: #{$plan-gap};
@@ -13,7 +13,6 @@ $plan-change-btn-width: toRem(53);
 
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   @include flex-gap($plan-gap); // fallback
   @include flex-gap(var(--plan-gap));
   @include clamp(margin-bottom, toRem(24), 6.3944vw, toRem(33));
@@ -80,7 +79,6 @@ $plan-change-btn-width: toRem(53);
 
 .plan__change-btn {
   min-width: fit-content;
-  @include variable(width, --plan-change-btn-width, $plan-change-btn-width);
   @include clamp(font-size, toRem(12), 3.4636vw, toRem(14.08));
   font-weight: 900;
   color: $bright-blue;
