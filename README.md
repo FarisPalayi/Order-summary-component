@@ -105,8 +105,8 @@ feel free to make a pull request or issue.
 
 ### Links 🔗
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- [Solution URL](https://www.frontendmentor.io/solutions/overengineered-card-8gDH0mIVM)
+- [Live Site URL](https://order-summary-page-farisp.netlify.app)
 
 ## My process
 
